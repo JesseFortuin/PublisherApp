@@ -19,6 +19,8 @@ namespace Publisher.Application
 
         public void AddCoupleOfAuthors(AddAuthorDto authorDto1, AddAuthorDto authorDto2);
 
+        public void RetrieveAndUpdateMultipleAuthorsLastNames(string lastName, string updatedLastName);
+
         public void SkipAndTakeAuthors(int groupSize);
 
         public void SortAuthorsDecendingOrder();
@@ -28,5 +30,11 @@ namespace Publisher.Application
         public void InsertAuthor(AddAuthorDto authorDto);
 
         public void RetrieveAndUpdateAuthor(string name, string newName);
+
+        public void CoordinatedRetrieveAndUpdateAuthor(int authorId, string originalName, string updatedName);
+
+        public void DeleteAuthor(int authorId);
+
+        public void InsertMultipleAuthors();
     }
 }

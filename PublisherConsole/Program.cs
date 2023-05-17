@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Publisher.Application;
 using Publisher.Infrastructure;
-using Publisher.Shared.Dtos;
 using PublisherData;
 
 IHost host = Host.CreateDefaultBuilder()
@@ -19,4 +18,4 @@ IHost host = Host.CreateDefaultBuilder()
 
 var publisher = host.Services.GetRequiredService<IPublisherFacade>();
 
-publisher.GetAuthors();
+publisher.InsertMultipleAuthors();

@@ -49,8 +49,6 @@ namespace Publisher.Infrastructure
 
         public bool GetAuthors()
         {
-            using var pubContext = new PubContext();
-
             var authors = pubContext.Authors.ToList();
 
             foreach (var author in authors)
@@ -61,11 +59,29 @@ namespace Publisher.Infrastructure
             return true;
         }
 
+        public bool RetrieveAndUpdateMultipleAuthorsLastNames(string name, string updatedLastName)
+        {
+            var Authors = pubContext.Authors.Where(a => a.LastName == name).ToList();
+
+            foreach (var author in Authors)
+            {
+                author.LastName = updatedLastName;
+            }
+
+            Console.WriteLine("Before" + pubContext.ChangeTracker.DebugView.ShortView);
+
+            pubContext.ChangeTracker.DetectChanges();
+
+            Console.WriteLine("After" + pubContext.ChangeTracker.DebugView.ShortView);
+
+            pubContext.SaveChanges();
+
+            return true;
+        }
+
         public bool GetAuthorsWithBooks()
         {
-            using var context = new PubContext();
-
-            var authors = context.Authors.Include(a => a.Books).ToList();
+            var authors = pubContext.Authors.Include(a => a.Books).ToList();
 
             foreach (var author in authors)
             {
@@ -91,11 +107,9 @@ namespace Publisher.Infrastructure
 
         public bool QueryAggregate(string lastName)
         {
-            PubContext _context = new PubContext();
+            var author = pubContext.Authors.FirstOrDefault(a => a.LastName == lastName);
 
-            var author = _context.Authors.FirstOrDefault(a => a.LastName == lastName);
-
-            var author2 = _context.Authors.OrderByDescending(a => a.FirstName)
+            var author2 = pubContext.Authors.OrderByDescending(a => a.FirstName)
                 .FirstOrDefault(a => a.LastName == lastName);
 
             return true;
@@ -103,14 +117,12 @@ namespace Publisher.Infrastructure
 
         public bool QueryFilters(string name, string filters)
         {
-            PubContext _context = new PubContext();
-
             //var authors = _context.Authors.Where(s => s.FirstName == "Julie").ToList();
 
             ////for EF Cores Sql injection protection
-            var authorsParameterised = _context.Authors.Where(s => s.FirstName == name).ToList();
+            var authorsParameterised = pubContext.Authors.Where(s => s.FirstName == name).ToList();
 
-            var authors = _context.Authors
+            var authors = pubContext.Authors
                 .Where(a => EF.Functions.Like(a.LastName, filters)).ToList();
             //starts with L % representing anything that comes therafter
 
@@ -119,9 +131,7 @@ namespace Publisher.Infrastructure
 
         public bool RetrieveAndUpdateAuthor(string name, string newName)
         {
-            PubContext _context = new PubContext();
-
-            var author = _context.Authors.FirstOrDefault(a => a.FirstName == name);
+            var author = pubContext.Authors.FirstOrDefault(a => a.FirstName == name);
 
             if (author == null)
             {
@@ -130,18 +140,16 @@ namespace Publisher.Infrastructure
 
             author.FirstName = newName;
 
-            _context.SaveChanges();
+            pubContext.SaveChanges();
 
             return true;
         }
 
         public bool SkipAndTakeAuthors(int groupSize)
         {
-            PubContext _context = new PubContext();
-
             for (int i = 0; i < 5; i++)
             {
-                var authors = _context.Authors.Skip(groupSize * i).Take(groupSize).ToList();
+                var authors = pubContext.Authors.Skip(groupSize * i).Take(groupSize).ToList();
 
                 Console.WriteLine($"Group {i}:");
 
@@ -157,21 +165,66 @@ namespace Publisher.Infrastructure
 
         public bool SortAuthors()
         {
-            PubContext _context = new PubContext();
-
-            var authorsByLastName = _context.Authors
+            var authorsByLastName = pubContext.Authors
                 .OrderBy(a => a.LastName)
                 .ThenBy(a => a.FirstName).ToList();
 
             authorsByLastName.ForEach(a => Console.WriteLine(a.LastName + " " + a.FirstName));
 
-            var authorsDescending = _context.Authors
+            var authorsDescending = pubContext.Authors
                 .OrderByDescending(a => a.LastName)
                 .ThenByDescending(a => a.FirstName).ToList();
 
             Console.WriteLine("**Descending Last and First**");
 
             authorsDescending.ForEach(a => Console.WriteLine(a.LastName + "," + a.FirstName));
+
+            return true;
+        }
+
+        public Author FindAnAuthor(int authorId)
+        {
+            using var shortLivedContext = new PubContext();
+
+            return shortLivedContext.Authors.Find(authorId);
+        }
+
+        public bool SaveAnAuthor(Author author)
+        {
+            using var newShortLivedContext = new PubContext();
+
+            newShortLivedContext.Authors.Update(author);
+
+            newShortLivedContext.SaveChanges();
+
+            return true;
+        }
+
+        public bool DeleteAnAuthor(int authorId)
+        {
+            var author = pubContext.Authors.Find(authorId);
+
+            if (author == null)
+            {
+                return false;
+            }
+
+            pubContext.Authors.Remove(author);
+
+            pubContext.SaveChanges();
+
+            return true;
+        }
+
+        public bool InsertMultipleAuthors()
+        {
+            pubContext.Authors.AddRange(new Author { FirstName = "Ruth", LastName = "Ozeki" },
+                                        new Author { FirstName = "Sofia", LastName = "Segovia" },
+                                        new Author { FirstName = "Ursula K.", LastName = "LeGuin" },
+                                        new Author { FirstName = "Hugh", LastName = "Howey" },
+                                        new Author { FirstName = "Isabelle", LastName = "Allende" });
+
+            pubContext.SaveChanges();
 
             return true;
         }

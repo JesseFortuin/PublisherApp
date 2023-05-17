@@ -1,10 +1,4 @@
 ﻿using Publisher.Domain.Entities;
-using Publisher.Shared.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Publisher.Infrastructure
 {
@@ -28,8 +22,18 @@ namespace Publisher.Infrastructure
 
         public bool RetrieveAndUpdateAuthor(string name, string newName);
 
+        public bool RetrieveAndUpdateMultipleAuthorsLastNames(string name, string updatedLastName);
+
         public bool SkipAndTakeAuthors(int groupSize);
 
         public bool SortAuthors();
+
+        public Author FindAnAuthor(int authorId);
+
+        public bool SaveAnAuthor(Author author);
+
+        public bool DeleteAnAuthor(int authorId);
+
+        public bool InsertMultipleAuthors();
     }
 }

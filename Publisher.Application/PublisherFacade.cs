@@ -33,7 +33,7 @@ namespace Publisher.Application
 
         public void AddAuthorWithBook(AddAuthorDto authorDto, AddBookDto bookDto)
         {
-            if (authorDto.FirstName == null && authorDto.LastName == null || 
+            if (authorDto.FirstName == null && authorDto.LastName == null && 
                 bookDto == null)
             {
                 throw new Exception("Author and Book is required");
@@ -78,6 +78,46 @@ namespace Publisher.Application
             var result = authorRepository.AddSomeMoreAuthors(author1, author2);
         }
 
+        public void CoordinatedRetrieveAndUpdateAuthor(int authorId, string originalName, string updatedName)
+        {
+            if (authorId <= 0)
+            {
+                throw new Exception("Insert valid Id");
+            }
+
+            if (string.IsNullOrWhiteSpace(originalName))
+            {
+                throw new Exception("Insert name you would like to change");
+            }
+
+            if (string.IsNullOrWhiteSpace(updatedName))
+            {
+                throw new Exception("New name is required");
+            }
+
+            var author = authorRepository.FindAnAuthor(authorId);
+
+            if (author?.FirstName == originalName) 
+            {
+                author.FirstName = updatedName;
+                
+                authorRepository.SaveAnAuthor(author);
+            }
+        }
+
+        public void DeleteAuthor(int authorId)
+        {
+            if (authorId <= 0)
+            {
+                throw new Exception("Insert valid Id");
+            }
+
+            if (authorRepository.DeleteAnAuthor(authorId) == false)
+            {
+                throw new Exception("Author not found in Database");
+            }
+        }
+
         public void FindAndPaginationQuery()
         {
             throw new NotImplementedException();
@@ -107,6 +147,11 @@ namespace Publisher.Application
             };
 
             var result = authorRepository.InsertAuthor(author);
+        }
+
+        public void InsertMultipleAuthors()
+        {
+            authorRepository.InsertMultipleAuthors();
         }
 
         public void QueryAggregate(string lastName)
@@ -141,6 +186,21 @@ namespace Publisher.Application
             }
 
             var result = authorRepository.RetrieveAndUpdateAuthor(name, newName);
+        }
+
+        public void RetrieveAndUpdateMultipleAuthorsLastNames(string lastName, string updatedLastName)
+        {
+            if (string.IsNullOrWhiteSpace(lastName))
+            {
+                throw new Exception("Insert name you would like to change");
+            }
+
+            if (string.IsNullOrWhiteSpace(updatedLastName))
+            {
+                throw new Exception("New name is required");
+            }
+
+            var result = authorRepository.RetrieveAndUpdateMultipleAuthorsLastNames(lastName, updatedLastName);
         }
 
         public void SkipAndTakeAuthors(int groupSize)
