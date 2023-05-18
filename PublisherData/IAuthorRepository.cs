@@ -8,7 +8,7 @@ namespace Publisher.Infrastructure
 
         public bool AddAuthorWithBook(Author author);
 
-        public bool AddSomeMoreAuthors(Author author1, Author author2);
+        public bool AddManyAuthors(params Author[] authors);
 
         public bool GetAuthors();
 

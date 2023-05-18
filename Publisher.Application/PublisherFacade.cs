@@ -15,7 +15,7 @@ namespace Publisher.Application
             this.authorRepository = authorRepository;
         }
 
-        public void AddAuthor(AddAuthorDto authorDto)
+        public bool AddAuthor(AddAuthorDto authorDto)
         {
             if (authorDto.FirstName == null && authorDto.LastName == null)
             {
@@ -29,12 +29,14 @@ namespace Publisher.Application
             };
 
             var result = authorRepository.AddAuthor(author);
+
+            return true;
         }
 
-        public void AddAuthorWithBook(AddAuthorDto authorDto, AddBookDto bookDto)
+        public bool AddAuthorWithBook(AddAuthorDto authorDto, AddBookDto bookDto)
         {
             if (authorDto.FirstName == null && authorDto.LastName == null && 
-                bookDto == null)
+                bookDto.Title == null && bookDto.PublishDate == DateTime.MinValue)
             {
                 throw new Exception("Author and Book is required");
             }
@@ -53,29 +55,43 @@ namespace Publisher.Application
             });
 
             var result = authorRepository.AddAuthor(author);
+
+            return true;
         }
 
-        public void AddCoupleOfAuthors(AddAuthorDto authorDto1, AddAuthorDto authorDto2)
+        public bool AddManyAuthors(params AddAuthorDto[] authorDtos)
         {
-            if (authorDto1.FirstName == null && authorDto1.LastName == null &&
-                authorDto2.FirstName == null && authorDto2.LastName == null)
-            {
-                throw new Exception("FirstName and LastName of both authors required");
-            }
+            var authors = new List<Author>();
 
-            var author1 = new Author
-            {
-                FirstName = authorDto1.FirstName,
-                LastName = authorDto1.LastName
-            };
+            //foreach (var authorDto in authorDtos) 
+            //{
+            //    if (authorDto.FirstName == null && authorDto.LastName == null)
+            //    {
+            //        throw new Exception("FirstName and LastName of author or authors required");
+            //    }
+            //    authorDto = new Author
+            //    {
+            //        FirstName = authorDto.FirstName,
+            //        LastName = authorDto.LastName
+            //    };
 
-            var author2 = new Author
-            {
-                FirstName = authorDto2.FirstName,
-                LastName = authorDto2.LastName
-            };
+            //    authors.Add(authorDto);
+            //}
+            
+            ////{
+            ////    FirstName = authorDto1.FirstName,
+            ////    LastName = authorDto1.LastName
+            ////};
 
-            var result = authorRepository.AddSomeMoreAuthors(author1, author2);
+            ////var author2 = new Author
+            ////{
+            ////    FirstName = authorDto2.FirstName,
+            ////    LastName = authorDto2.LastName
+            ////};
+
+            //var result = authorRepository.AddManyAuthors(author1, author2);
+
+            return true;
         }
 
         public void CoordinatedRetrieveAndUpdateAuthor(int authorId, string originalName, string updatedName)
@@ -105,7 +121,7 @@ namespace Publisher.Application
             }
         }
 
-        public void DeleteAuthor(int authorId)
+        public bool DeleteAuthor(int authorId)
         {
             if (authorId <= 0)
             {
@@ -116,6 +132,8 @@ namespace Publisher.Application
             {
                 throw new Exception("Author not found in Database");
             }
+
+            return true;        
         }
 
         public void FindAndPaginationQuery()
@@ -123,17 +141,21 @@ namespace Publisher.Application
             throw new NotImplementedException();
         }
 
-        public void GetAuthors()
+        public bool GetAuthors()
         {
             var result = authorRepository.GetAuthors();
+
+            return true;
         }
 
-        public void GetAuthorsWithBooks()
+        public bool GetAuthorsWithBooks()
         {
             var result = authorRepository.GetAuthorsWithBooks();
+
+            return true;
         }
 
-        public void InsertAuthor(AddAuthorDto authorDto)
+        public bool InsertAuthor(AddAuthorDto authorDto)
         {
             if (authorDto.FirstName == null && authorDto.LastName == null)
             {
@@ -147,6 +169,8 @@ namespace Publisher.Application
             };
 
             var result = authorRepository.InsertAuthor(author);
+
+            return true;
         }
 
         public void InsertMultipleAuthors()
@@ -154,7 +178,7 @@ namespace Publisher.Application
             authorRepository.InsertMultipleAuthors();
         }
 
-        public void QueryAggregate(string lastName)
+        public bool QueryAggregate(string lastName)
         {
             if (string.IsNullOrWhiteSpace(lastName))
             {
@@ -162,6 +186,8 @@ namespace Publisher.Application
             }
 
             var result = authorRepository.QueryAggregate(lastName);
+
+            return true;
         }
 
         public void QueryFilters()
@@ -173,7 +199,7 @@ namespace Publisher.Application
             var result = authorRepository.QueryFilters(name, filters);
         }
 
-        public void RetrieveAndUpdateAuthor(string name, string newName)
+        public bool RetrieveAndUpdateAuthor(string name, string newName)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -186,9 +212,11 @@ namespace Publisher.Application
             }
 
             var result = authorRepository.RetrieveAndUpdateAuthor(name, newName);
+
+            return true;
         }
 
-        public void RetrieveAndUpdateMultipleAuthorsLastNames(string lastName, string updatedLastName)
+        public bool RetrieveAndUpdateMultipleAuthorsLastNames(string lastName, string updatedLastName)
         {
             if (string.IsNullOrWhiteSpace(lastName))
             {
@@ -201,9 +229,11 @@ namespace Publisher.Application
             }
 
             var result = authorRepository.RetrieveAndUpdateMultipleAuthorsLastNames(lastName, updatedLastName);
+
+            return true;
         }
 
-        public void SkipAndTakeAuthors(int groupSize)
+        public bool SkipAndTakeAuthors(int groupSize)
         {
             if (groupSize <= 0)
             {
@@ -211,11 +241,15 @@ namespace Publisher.Application
             }
 
             var result = authorRepository.SkipAndTakeAuthors(groupSize);
+
+            return true;
         }
 
-        public void SortAuthorsDecendingOrder()
+        public bool SortAuthorsDecendingOrder()
         {
             var result = authorRepository.SortAuthors();
+
+            return true;
         }
     }
 }

@@ -23,4 +23,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Publisher.Application\Publisher.Application.csproj" />
+    <ProjectReference Include="..\PublisherDomain.Shared\Publisher.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

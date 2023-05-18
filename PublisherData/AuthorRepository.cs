@@ -31,11 +31,11 @@ namespace Publisher.Infrastructure
             return true;
         }
 
-        public bool AddSomeMoreAuthors(Author author1, Author author2)
+        public bool AddManyAuthors(params Author[] authors)
         {
-            pubContext.Authors.Add(author1);
+            //pubContext.Authors.Add(author1);
 
-            pubContext.Authors.Add(author2);
+            //pubContext.Authors.Add(author2);
 
             pubContext.SaveChanges();
 
