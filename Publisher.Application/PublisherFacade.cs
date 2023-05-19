@@ -24,7 +24,7 @@ namespace Publisher.Application
 
             var author = new Author
             {
-                FirstName = authorDto.FirstName,
+                FirstName = authorDto.FirstName, 
                 LastName = authorDto.LastName
             };
 
@@ -63,12 +63,15 @@ namespace Publisher.Application
         {
             var authors = new List<Author>();
 
-            //foreach (var authorDto in authorDtos) 
+            var authorIdentifiers = new List<(string, string)>();
+
+            //foreach (var authorDto in authorDtos)
             //{
             //    if (authorDto.FirstName == null && authorDto.LastName == null)
             //    {
             //        throw new Exception("FirstName and LastName of author or authors required");
             //    }
+
             //    authorDto = new Author
             //    {
             //        FirstName = authorDto.FirstName,
@@ -77,17 +80,17 @@ namespace Publisher.Application
 
             //    authors.Add(authorDto);
             //}
-            
-            ////{
-            ////    FirstName = authorDto1.FirstName,
-            ////    LastName = authorDto1.LastName
-            ////};
 
-            ////var author2 = new Author
-            ////{
-            ////    FirstName = authorDto2.FirstName,
-            ////    LastName = authorDto2.LastName
-            ////};
+            //{
+            //    FirstName = authorDto1.FirstName,
+            //    LastName = authorDto1.LastName
+            //};
+
+            //var author2 = new Author
+            //{
+            //    FirstName = authorDto2.FirstName,
+            //    LastName = authorDto2.LastName
+            //};
 
             //var result = authorRepository.AddManyAuthors(author1, author2);
 

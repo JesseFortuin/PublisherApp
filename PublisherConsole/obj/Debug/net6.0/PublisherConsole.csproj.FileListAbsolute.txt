@@ -94,3 +94,8 @@ D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\PublisherConsole\obj\Debug\ne
 D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\PublisherConsole\obj\Debug\net6.0\ref\PublisherConsole.dll
 D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\PublisherConsole\bin\Debug\net6.0\Publisher.Domain.dll
 D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\PublisherConsole\bin\Debug\net6.0\Publisher.Domain.pdb
+D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\PublisherConsole\bin\Debug\net6.0\Humanizer.dll
+D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\PublisherConsole\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\PublisherConsole\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\PublisherConsole\bin\Debug\net6.0\Mono.TextTemplating.dll
+D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\PublisherConsole\bin\Debug\net6.0\System.CodeDom.dll

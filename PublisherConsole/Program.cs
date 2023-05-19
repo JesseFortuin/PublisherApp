@@ -18,4 +18,4 @@ IHost host = Host.CreateDefaultBuilder()
 
 var publisher = host.Services.GetRequiredService<IPublisherFacade>();
 
-publisher.InsertMultipleAuthors();
+publisher.GetAuthorsWithBooks();
