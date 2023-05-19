@@ -47,6 +47,70 @@ namespace Publisher.Test
         }
 
         [Fact]
+        public void AddManyAuthors_Fails_WithInvalidAddAuthorDto()
+        {
+            //arrange
+            var invalidAuthorDtoArray = new AddAuthorDto[2];
+
+            var validDto = new AddAuthorDto
+            {
+                FirstName = "Test",
+                LastName = "TestLastName",
+            };
+
+            var invalidDto = new AddAuthorDto();
+
+            invalidAuthorDtoArray[0] = validDto;
+
+            invalidAuthorDtoArray[1] = invalidDto;
+
+            IAuthorRepository authorRepository = Substitute.For<IAuthorRepository>();
+
+            IPublisherFacade publisherFacade = new PublisherFacade(null);
+
+            //act
+            var result = Assert.Throws<Exception>(() => publisherFacade.AddManyAuthors(invalidAuthorDtoArray));
+
+            //assert
+            Assert.Equal("FirstName and LastName of author or authors required", result.Message);
+        }
+
+        [Fact]
+        public void AddManyAuthors_Succeeds_WithValidAddAuthorDto()
+        {
+            //arrange
+            var validAuthorDtoArray = new AddAuthorDto[2];
+
+            var firstDto = new AddAuthorDto
+            {
+                FirstName = "Test",
+                LastName = "TestLastName",
+            };
+
+            var secondDto = new AddAuthorDto
+            {
+                FirstName = "Testie",
+                LastName = "Testertin"
+            };
+
+            validAuthorDtoArray[0] = firstDto;
+
+            validAuthorDtoArray[1] = secondDto;
+
+            var expected = true;
+
+            IAuthorRepository authorRepository = Substitute.For<IAuthorRepository>();
+
+            IPublisherFacade publisherFacade = new PublisherFacade(authorRepository);
+
+            //act
+            var result = publisherFacade.AddManyAuthors(validAuthorDtoArray);
+
+            //assert
+            Assert.Equal(expected, result);
+        }
+
+        [Fact]
         public void AddAuthorWithBook_Fails_WithInvalidAddAuthorDto()
         {
             //arrange
@@ -82,7 +146,6 @@ namespace Publisher.Test
 
             //assert
             Assert.Equal("Author and Book is required", result.Message);
-
         }
 
         [Fact]

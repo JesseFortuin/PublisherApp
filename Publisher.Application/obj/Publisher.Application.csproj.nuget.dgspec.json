@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj": {}
+    "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj": {}
   },
   "projects": {
-    "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj": {
+    "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj",
+        "projectUniqueName": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj",
         "projectName": "Publisher.Application",
-        "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj",
+        "projectPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj",
         "packagesPath": "C:\\Users\\jesse\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Application\\obj\\",
+        "outputPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj": {
-                "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj"
+              "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj"
               },
-              "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
-                "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj"
+              "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
+                "projectPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj"
               }
             }
           }
@@ -66,18 +66,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj": {
+    "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
         "projectName": "Publisher.Domain",
-        "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
+        "projectPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
         "packagesPath": "C:\\Users\\jesse\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\obj\\",
+        "outputPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -125,18 +125,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj": {
+    "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj",
         "projectName": "Publisher.Infrastructure",
-        "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\jesse\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherData\\obj\\",
+        "outputPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherData\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -157,11 +157,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj": {
-                "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj"
+              "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj": {
+                "projectPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj"
               },
-              "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
-                "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj"
+              "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
+                "projectPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj"
               }
             }
           }
@@ -197,18 +197,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
+    "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj",
         "projectName": "Publisher.Shared",
-        "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj",
+        "projectPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj",
         "packagesPath": "C:\\Users\\jesse\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\obj\\",
+        "outputPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherDomain.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -256,7 +256,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Publisher.Application;
 using Publisher.Infrastructure;
+using Publisher.Shared.Dtos;
 using PublisherData;
 
 IHost host = Host.CreateDefaultBuilder()
@@ -17,5 +18,12 @@ IHost host = Host.CreateDefaultBuilder()
     .Build();
 
 var publisher = host.Services.GetRequiredService<IPublisherFacade>();
+
+//var authors = new List<AddAuthorDto>
+//{
+//    new AddAuthorDto { FirstName = "Andrzej", LastName = "Sapkowski" }
+//};
+
+//publisher.AddManyAuthors(authors.ToArray());
 
 publisher.GetAuthorsWithBooks();

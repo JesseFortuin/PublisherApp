@@ -33,9 +33,7 @@ namespace Publisher.Infrastructure
 
         public bool AddManyAuthors(params Author[] authors)
         {
-            //pubContext.Authors.Add(author1);
-
-            //pubContext.Authors.Add(author2);
+            pubContext.Authors.AddRange(authors);
 
             pubContext.SaveChanges();
 
@@ -181,6 +179,25 @@ namespace Publisher.Infrastructure
 
             return true;
         }
+
+        //public Author FindAuthor(int authorId)
+        //{
+        //    return pubContext.Authors.Find(authorId);
+        //}
+
+        //public bool DeleteAuthor(Author author)
+        //{
+        //    if (author == null)
+        //    {
+        //        return false;
+        //    }
+
+        //    pubContext.Authors.Remove(author);
+
+        //    pubContext.SaveChanges();
+
+        //    return true;
+        //}
 
         public Author FindAnAuthor(int authorId)
         {

@@ -10,3 +10,15 @@ D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\Publisher.Domain\obj\Debug\ne
 D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\Publisher.Domain\obj\Debug\net6.0\refint\Publisher.Domain.dll
 D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\Publisher.Domain\obj\Debug\net6.0\Publisher.Domain.pdb
 D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\Publisher.Domain\obj\Debug\net6.0\ref\Publisher.Domain.dll
+D:\PublisherApp-main\Publisher.Domain\bin\Debug\net6.0\Publisher.Domain.deps.json
+D:\PublisherApp-main\Publisher.Domain\bin\Debug\net6.0\Publisher.Domain.dll
+D:\PublisherApp-main\Publisher.Domain\bin\Debug\net6.0\Publisher.Domain.pdb
+D:\PublisherApp-main\Publisher.Domain\obj\Debug\net6.0\Publisher.Domain.csproj.AssemblyReference.cache
+D:\PublisherApp-main\Publisher.Domain\obj\Debug\net6.0\Publisher.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\PublisherApp-main\Publisher.Domain\obj\Debug\net6.0\Publisher.Domain.AssemblyInfoInputs.cache
+D:\PublisherApp-main\Publisher.Domain\obj\Debug\net6.0\Publisher.Domain.AssemblyInfo.cs
+D:\PublisherApp-main\Publisher.Domain\obj\Debug\net6.0\Publisher.Domain.csproj.CoreCompileInputs.cache
+D:\PublisherApp-main\Publisher.Domain\obj\Debug\net6.0\Publisher.Domain.dll
+D:\PublisherApp-main\Publisher.Domain\obj\Debug\net6.0\refint\Publisher.Domain.dll
+D:\PublisherApp-main\Publisher.Domain\obj\Debug\net6.0\Publisher.Domain.pdb
+D:\PublisherApp-main\Publisher.Domain\obj\Debug\net6.0\ref\Publisher.Domain.dll

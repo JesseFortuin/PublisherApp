@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gKTeTE0hKspVVRrVdZtmAjuDUaUvlr76yRzOLPMA+usNHv8k0RRw+ECT2+ppP9UBmBDpj3vxCpLRJQ2Uutlx2w==",
+  "dgSpecHash": "6QEXOWSOtG28dKfBqL38VoFXbGOiDYOJ9OPxRM0OMD9V54m0fi5HInwkVnpFam/0r0Rbpx5tVs2pYyDB8Ct1qg==",
   "success": true,
-  "projectFilePath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jesse\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\jesse\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

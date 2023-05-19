@@ -35,7 +35,7 @@ namespace Publisher.Application
 
         public bool AddAuthorWithBook(AddAuthorDto authorDto, AddBookDto bookDto)
         {
-            if (authorDto.FirstName == null && authorDto.LastName == null && 
+            if (authorDto.FirstName == null && authorDto.LastName == null || 
                 bookDto.Title == null && bookDto.PublishDate == DateTime.MinValue)
             {
                 throw new Exception("Author and Book is required");
@@ -63,38 +63,25 @@ namespace Publisher.Application
         {
             var authors = new List<Author>();
 
-            var authorIdentifiers = new List<(string, string)>();
+            foreach (var authorDto in authorDtos)
+            {
+                if (authorDto.FirstName == null && authorDto.LastName == null)
+                {
+                    throw new Exception("FirstName and LastName of author or authors required");
+                }
 
-            //foreach (var authorDto in authorDtos)
-            //{
-            //    if (authorDto.FirstName == null && authorDto.LastName == null)
-            //    {
-            //        throw new Exception("FirstName and LastName of author or authors required");
-            //    }
+                var author = new Author
+                {
+                    FirstName = authorDto.FirstName,
+                    LastName = authorDto.LastName
+                };
 
-            //    authorDto = new Author
-            //    {
-            //        FirstName = authorDto.FirstName,
-            //        LastName = authorDto.LastName
-            //    };
+                authors.Add(author);
+            }
 
-            //    authors.Add(authorDto);
-            //}
+            var result = authorRepository.AddManyAuthors(authors.ToArray());
 
-            //{
-            //    FirstName = authorDto1.FirstName,
-            //    LastName = authorDto1.LastName
-            //};
-
-            //var author2 = new Author
-            //{
-            //    FirstName = authorDto2.FirstName,
-            //    LastName = authorDto2.LastName
-            //};
-
-            //var result = authorRepository.AddManyAuthors(author1, author2);
-
-            return true;
+            return result;
         }
 
         public void CoordinatedRetrieveAndUpdateAuthor(int authorId, string originalName, string updatedName)
@@ -131,12 +118,14 @@ namespace Publisher.Application
                 throw new Exception("Insert valid Id");
             }
 
-            if (authorRepository.DeleteAnAuthor(authorId) == false)
+            var result = authorRepository.DeleteAnAuthor(authorId);
+            
+            if (!result)
             {
                 throw new Exception("Author not found in Database");
             }
 
-            return true;        
+            return result;        
         }
 
         public void FindAndPaginationQuery()

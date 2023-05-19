@@ -15,3 +15,20 @@ D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\PublisherData\bin\Debug\net6.
 D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\PublisherData\bin\Debug\net6.0\Publisher.Domain.pdb
 D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\PublisherData\bin\Debug\net6.0\Publisher.Shared.dll
 D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\PublisherData\bin\Debug\net6.0\Publisher.Shared.pdb
+D:\PublisherApp-main\PublisherData\bin\Debug\net6.0\Publisher.Infrastructure.deps.json
+D:\PublisherApp-main\PublisherData\bin\Debug\net6.0\Publisher.Infrastructure.dll
+D:\PublisherApp-main\PublisherData\bin\Debug\net6.0\Publisher.Infrastructure.pdb
+D:\PublisherApp-main\PublisherData\bin\Debug\net6.0\Publisher.Domain.dll
+D:\PublisherApp-main\PublisherData\bin\Debug\net6.0\Publisher.Shared.dll
+D:\PublisherApp-main\PublisherData\bin\Debug\net6.0\Publisher.Domain.pdb
+D:\PublisherApp-main\PublisherData\bin\Debug\net6.0\Publisher.Shared.pdb
+D:\PublisherApp-main\PublisherData\obj\Debug\net6.0\Publisher.Infrastructure.csproj.AssemblyReference.cache
+D:\PublisherApp-main\PublisherData\obj\Debug\net6.0\Publisher.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\PublisherApp-main\PublisherData\obj\Debug\net6.0\Publisher.Infrastructure.AssemblyInfoInputs.cache
+D:\PublisherApp-main\PublisherData\obj\Debug\net6.0\Publisher.Infrastructure.AssemblyInfo.cs
+D:\PublisherApp-main\PublisherData\obj\Debug\net6.0\Publisher.Infrastructure.csproj.CoreCompileInputs.cache
+D:\PublisherApp-main\PublisherData\obj\Debug\net6.0\Publisher.Infrastructure.csproj.CopyComplete
+D:\PublisherApp-main\PublisherData\obj\Debug\net6.0\Publisher.Infrastructure.dll
+D:\PublisherApp-main\PublisherData\obj\Debug\net6.0\refint\Publisher.Infrastructure.dll
+D:\PublisherApp-main\PublisherData\obj\Debug\net6.0\Publisher.Infrastructure.pdb
+D:\PublisherApp-main\PublisherData\obj\Debug\net6.0\ref\Publisher.Infrastructure.dll

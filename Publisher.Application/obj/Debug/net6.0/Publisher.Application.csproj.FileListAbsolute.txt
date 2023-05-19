@@ -17,3 +17,22 @@ D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\Publisher.Application\bin\Deb
 D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\Publisher.Application\bin\Debug\net6.0\Publisher.Domain.pdb
 D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\Publisher.Application\bin\Debug\net6.0\Publisher.Shared.dll
 D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\Publisher.Application\bin\Debug\net6.0\Publisher.Shared.pdb
+D:\PublisherApp-main\Publisher.Application\bin\Debug\net6.0\Publisher.Application.deps.json
+D:\PublisherApp-main\Publisher.Application\bin\Debug\net6.0\Publisher.Application.dll
+D:\PublisherApp-main\Publisher.Application\bin\Debug\net6.0\Publisher.Application.pdb
+D:\PublisherApp-main\Publisher.Application\bin\Debug\net6.0\Publisher.Domain.dll
+D:\PublisherApp-main\Publisher.Application\bin\Debug\net6.0\Publisher.Infrastructure.dll
+D:\PublisherApp-main\Publisher.Application\bin\Debug\net6.0\Publisher.Shared.dll
+D:\PublisherApp-main\Publisher.Application\bin\Debug\net6.0\Publisher.Infrastructure.pdb
+D:\PublisherApp-main\Publisher.Application\bin\Debug\net6.0\Publisher.Shared.pdb
+D:\PublisherApp-main\Publisher.Application\bin\Debug\net6.0\Publisher.Domain.pdb
+D:\PublisherApp-main\Publisher.Application\obj\Debug\net6.0\Publisher.Application.csproj.AssemblyReference.cache
+D:\PublisherApp-main\Publisher.Application\obj\Debug\net6.0\Publisher.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\PublisherApp-main\Publisher.Application\obj\Debug\net6.0\Publisher.Application.AssemblyInfoInputs.cache
+D:\PublisherApp-main\Publisher.Application\obj\Debug\net6.0\Publisher.Application.AssemblyInfo.cs
+D:\PublisherApp-main\Publisher.Application\obj\Debug\net6.0\Publisher.Application.csproj.CoreCompileInputs.cache
+D:\PublisherApp-main\Publisher.Application\obj\Debug\net6.0\Publisher.Application.csproj.CopyComplete
+D:\PublisherApp-main\Publisher.Application\obj\Debug\net6.0\Publisher.Application.dll
+D:\PublisherApp-main\Publisher.Application\obj\Debug\net6.0\refint\Publisher.Application.dll
+D:\PublisherApp-main\Publisher.Application\obj\Debug\net6.0\Publisher.Application.pdb
+D:\PublisherApp-main\Publisher.Application\obj\Debug\net6.0\ref\Publisher.Application.dll
