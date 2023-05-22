@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj": {}
+    "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj": {
+    "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
+        "projectUniqueName": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
         "projectName": "Publisher.Domain",
-        "projectPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
+        "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
         "packagesPath": "C:\\Users\\jesse\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jesse\\OneDrive\\Desktop\\PublisherApp\\Publisher.Domain\\obj\\",
+        "outputPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

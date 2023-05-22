@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using NSubstitute;
 using Publisher.Application;
 using Publisher.Infrastructure;
@@ -27,7 +26,7 @@ namespace Publisher.Test
         public void AddAuthor_Succeeds_WithValidAddAuthorDto()
         {
             //arrange
-            var authorDto = new AddAuthorDto 
+            var authorDto = new AddAuthorDto
             {
                 FirstName = "Test",
                 LastName = "TestLastName",
@@ -116,7 +115,7 @@ namespace Publisher.Test
             //arrange
             var authorDto = new AddAuthorDto();
 
-            var bookDto = new AddBookDto {PublishDate = DateTime.Now, Title = "Test" };   
+            var bookDto = new AddBookDto { PublishDate = DateTime.Now, Title = "Test" };
 
             IPublisherFacade publisherFacade = new PublisherFacade(null);
 
@@ -354,7 +353,7 @@ namespace Publisher.Test
             //arrange
             IPublisherFacade publisherFacade = new PublisherFacade(null);
 
-            var name = "Test" ;
+            var name = "Test";
 
             var newName = string.Empty;
 
@@ -401,7 +400,7 @@ namespace Publisher.Test
             //assert
             Assert.Equal("A Group size larger than 0 is needed", result.Message);
         }
-        
+
         [Fact]
         public void SkipAndTakeAuthors_Fails_ZeroGiven()
         {

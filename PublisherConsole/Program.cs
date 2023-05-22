@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Publisher.Application;
 using Publisher.Infrastructure;
-using Publisher.Shared.Dtos;
 using PublisherData;
 
 IHost host = Host.CreateDefaultBuilder()
@@ -14,10 +13,16 @@ IHost host = Host.CreateDefaultBuilder()
         services.AddSingleton<PubContext>();
 
         services.AddSingleton<IAuthorRepository, AuthorRepository>();
+
+        services.AddSingleton<IBookFacade, BookFacade>();
+
+        services.AddSingleton<IBookRepository, BookRepository>();
     })
     .Build();
 
 var publisher = host.Services.GetRequiredService<IPublisherFacade>();
+
+var bookFacade = host.Services.GetService<IBookFacade>();
 
 //var authors = new List<AddAuthorDto>
 //{
@@ -26,4 +31,9 @@ var publisher = host.Services.GetRequiredService<IPublisherFacade>();
 
 //publisher.AddManyAuthors(authors.ToArray());
 
-publisher.GetAuthorsWithBooks();
+//publisher.GetAuthors();
+//var bookDto = bookFacade.GetBookById(1);
+
+//Console.WriteLine($"Book Author is {bookDto.AuthorName}, book id is {bookDto.BookId}, and title of the book us {bookDto.Title}");
+
+bookFacade.GetAllBooks();

@@ -28,7 +28,7 @@ namespace Publisher.Infrastructure
 
         public bool SortAuthors();
 
-        public bool FindAuthor(int authorId);
+        //public bool FindAuthor(int authorId);
 
         public Author FindAnAuthor(int authorId);
 

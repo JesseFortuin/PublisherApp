@@ -24,11 +24,11 @@ namespace Publisher.Infrastructure.Migrations
 
             modelBuilder.Entity("Publisher.Domain.Entities.Author", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AuthorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AuthorId"));
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -38,44 +38,44 @@ namespace Publisher.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("AuthorId");
 
                     b.ToTable("Authors");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            AuthorId = 1,
                             FirstName = "Rhoda",
                             LastName = "Lerman"
                         },
                         new
                         {
-                            Id = 2,
+                            AuthorId = 2,
                             FirstName = "Ruth",
                             LastName = "Ozeki"
                         },
                         new
                         {
-                            Id = 3,
+                            AuthorId = 3,
                             FirstName = "Sofia",
                             LastName = "Segovia"
                         },
                         new
                         {
-                            Id = 4,
+                            AuthorId = 4,
                             FirstName = "Ursula K.",
                             LastName = "LeGuin"
                         },
                         new
                         {
-                            Id = 5,
+                            AuthorId = 5,
                             FirstName = "Hugh",
                             LastName = "Howey"
                         },
                         new
                         {
-                            Id = 6,
+                            AuthorId = 6,
                             FirstName = "Isabelle",
                             LastName = "Allende"
                         });
@@ -107,6 +107,32 @@ namespace Publisher.Infrastructure.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            BookId = 1,
+                            AuthorId = 1,
+                            BasePrice = 0m,
+                            PublishDate = new DateTime(1989, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "In God's Ear"
+                        },
+                        new
+                        {
+                            BookId = 2,
+                            AuthorId = 2,
+                            BasePrice = 0m,
+                            PublishDate = new DateTime(2013, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "A Tale For the Time Being"
+                        },
+                        new
+                        {
+                            BookId = 3,
+                            AuthorId = 3,
+                            BasePrice = 0m,
+                            PublishDate = new DateTime(1969, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "The Left Hand of Darkness"
+                        });
                 });
 
             modelBuilder.Entity("Publisher.Domain.Entities.Book", b =>
