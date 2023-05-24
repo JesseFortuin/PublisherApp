@@ -8,13 +8,15 @@ namespace Publisher.Application
 
         public bool GetAuthors();
 
-        public bool AddAuthorWithBook(AddAuthorDto authorDto, AddBookDto bookDto);
+        public bool AddAuthorWithBook(AddAuthorDto authorDto, AddAuthorBookDto bookDto);
+
+        public bool AddNewBookToExistingAuthor(string authorsLastName, AddAuthorBookDto bookDto);
 
         public bool GetAuthorsWithBooks();
 
-        public void QueryFilters();
+        public bool EagerLoadBooksWithAuthors();
 
-        public void FindAndPaginationQuery();
+        public void QueryFilters();
 
         public bool AddManyAuthors(params AddAuthorDto[] authorDtos);
 

@@ -33,7 +33,7 @@ namespace Publisher.Application
             return true;
         }
 
-        public bool AddAuthorWithBook(AddAuthorDto authorDto, AddBookDto bookDto)
+        public bool AddAuthorWithBook(AddAuthorDto authorDto, AddAuthorBookDto bookDto)
         {
             if (authorDto.FirstName == null && authorDto.LastName == null || 
                 bookDto.Title == null && bookDto.PublishDate == DateTime.MinValue)
@@ -84,6 +84,23 @@ namespace Publisher.Application
             return result;
         }
 
+        public bool AddNewBookToExistingAuthor(string authorsLastName, AddAuthorBookDto bookDto)
+        {
+            if (string.IsNullOrWhiteSpace(authorsLastName))
+            {
+                throw new Exception("Author's lastname is required");
+            }
+
+            if (bookDto.Title == null && bookDto.Title == null) 
+            {
+                throw new Exception("Valid book info required");
+            }
+
+            var result = authorRepository.AddNewBookToExistingAuthor(authorsLastName, bookDto);
+
+            return result;
+        }
+
         public void CoordinatedRetrieveAndUpdateAuthor(int authorId, string originalName, string updatedName)
         {
             if (authorId <= 0)
@@ -101,7 +118,7 @@ namespace Publisher.Application
                 throw new Exception("New name is required");
             }
 
-            var author = authorRepository.FindAnAuthor(authorId);
+            var author = authorRepository.FindAnAuthorById(authorId);
 
             if (author?.FirstName == originalName) 
             {
@@ -128,9 +145,11 @@ namespace Publisher.Application
             return result;        
         }
 
-        public void FindAndPaginationQuery()
+        public bool EagerLoadBooksWithAuthors()
         {
-            throw new NotImplementedException();
+            var result = authorRepository.EagerLoadBooksWithAuthors();
+
+            return result;
         }
 
         public bool GetAuthors()

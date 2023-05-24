@@ -115,7 +115,7 @@ namespace Publisher.Test
             //arrange
             var authorDto = new AddAuthorDto();
 
-            var bookDto = new AddBookDto { PublishDate = DateTime.Now, Title = "Test" };
+            var bookDto = new AddAuthorBookDto { PublishDate = DateTime.Now, Title = "Test" };
 
             IPublisherFacade publisherFacade = new PublisherFacade(null);
 
@@ -136,7 +136,7 @@ namespace Publisher.Test
                 LastName = "TestLastName",
             };
 
-            var bookDto = new AddBookDto();
+            var bookDto = new AddAuthorBookDto();
 
             IPublisherFacade publisherFacade = new PublisherFacade(null);
 
@@ -157,7 +157,7 @@ namespace Publisher.Test
                 LastName = "TestLastName",
             };
 
-            var bookDto = new AddBookDto { PublishDate = DateTime.Now, Title = "Test" };
+            var bookDto = new AddAuthorBookDto { PublishDate = DateTime.Now, Title = "Test" };
 
             IAuthorRepository authorRepository = Substitute.For<IAuthorRepository>();
 

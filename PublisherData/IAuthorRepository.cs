@@ -1,4 +1,5 @@
 ﻿using Publisher.Domain.Entities;
+using Publisher.Shared.Dtos;
 
 namespace Publisher.Infrastructure
 {
@@ -8,7 +9,13 @@ namespace Publisher.Infrastructure
 
         public bool AddAuthorWithBook(Author author);
 
+        public bool AddNewBookToExistingAuthor(string authorsLastName, AddAuthorBookDto bookDto);
+
         public bool AddManyAuthors(params Author[] authors);
+
+        public bool EagerLoadBooksWithAuthors();
+
+        public bool ExplicitLoadCollection();
 
         public bool GetAuthors();
 
@@ -30,7 +37,7 @@ namespace Publisher.Infrastructure
 
         //public bool FindAuthor(int authorId);
 
-        public Author FindAnAuthor(int authorId);
+        public Author FindAnAuthorById(int authorId);
 
         public bool SaveAnAuthor(Author author);
 

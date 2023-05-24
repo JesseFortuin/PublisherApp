@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Publisher.Application;
 using Publisher.Infrastructure;
+using Publisher.Shared.Dtos;
 using PublisherData;
 
 IHost host = Host.CreateDefaultBuilder()
@@ -34,6 +35,33 @@ var bookFacade = host.Services.GetService<IBookFacade>();
 //publisher.GetAuthors();
 //var bookDto = bookFacade.GetBookById(1);
 
-//Console.WriteLine($"Book Author is {bookDto.AuthorName}, book id is {bookDto.BookId}, and title of the book us {bookDto.Title}");
+//Console.WriteLine($"Book Author is {bookDto.AuthorName}, book id is {bookDto.BookId}, and title of the book is {bookDto.Title}");
 
-bookFacade.GetAllBooks();
+//var books = new List<BookDto>
+//{
+//    new BookDto { AuthorName = "Andrzej Sapkowski", Title = "The Witcher: Blood of Elves", PublishDate = new DateTime (2009, 12, 4)},
+//    new BookDto { Title = "The Witcher: Time of Contempt", PublishDate = new DateTime (2013, 1, 21)}
+//};
+
+//bookFacade.AddBooksToAnAuthor(books.ToArray());
+
+//var result = bookFacade.GetAllBooks();
+
+//foreach (var bookDto in result)
+//{
+//    Console.WriteLine($"Book Author: {bookDto.AuthorName}, book Id: {bookDto.BookId}, Title: {bookDto.Title}");
+//}
+
+//var author = new AddAuthorDto { FirstName = "Lynda", LastName = "Rutledge" };
+
+//var book = new AddBookDto { PublishDate = new DateTime(2021, 2, 1), Title = "West With Giraffes" };
+
+//publisher.AddAuthorWithBook(author, book);
+
+//var book = new AddBookDto { PublishDate = new DateTime(2012, 1, 1), Title = "Wool" };
+
+//publisher.AddNewBookToExistingAuthor("Howey", book);
+
+//publisher.EagerLoadBooksWithAuthors();
+
+//      publisher.GetAuthorsWithBooks();

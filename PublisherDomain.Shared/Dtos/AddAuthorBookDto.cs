@@ -1,12 +1,8 @@
 ﻿namespace Publisher.Shared.Dtos
 {
-    public class BookDto
+    public class AddAuthorBookDto
     {
-        public int BookId { get; set; }
-
         public string Title { get; set; }
-
-        public string AuthorName { get; set; }
 
         public DateTime PublishDate { get; set; }
     }

@@ -6,8 +6,8 @@ namespace Publisher.Application
     {
         public BookDto GetBookById(int id);
 
-        public bool GetAllBooks();
+        public List<BookDto> GetAllBooks();
 
-        public bool AddBooksToAuthor(params BookDto[] books);
+        public bool AddManyBooks(params AddBookDto[] books);
     }
 }

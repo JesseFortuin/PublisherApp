@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Publisher.Domain.Entities;
+using Publisher.Shared.Dtos;
 using PublisherData;
 
 namespace Publisher.Infrastructure
@@ -38,11 +39,6 @@ namespace Publisher.Infrastructure
             pubContext.SaveChanges();
 
             return true;
-        }
-
-        public bool FindAndPaginationQuery()
-        {
-            throw new NotImplementedException();
         }
 
         public bool GetAuthors()
@@ -199,7 +195,7 @@ namespace Publisher.Infrastructure
         //    return true;
         //}
 
-        public Author FindAnAuthor(int authorId)
+        public Author FindAnAuthorById(int authorId)
         {
             using var shortLivedContext = new PubContext();
 
@@ -245,7 +241,79 @@ namespace Publisher.Infrastructure
 
             return true;
         }
+
+        public bool AddNewBookToExistingAuthor(string authorsLastName, AddAuthorBookDto bookDto)
+        {
+            var author = pubContext.Authors.FirstOrDefault(a => a.LastName == authorsLastName);
+
+            if (author == null)
+            {
+                return false;
+            }
+
+            author.Books.Add(
+                new Book { Title = bookDto.Title, PublishDate = new DateTime(2012, 1, 1)}
+                );
+
+            pubContext.SaveChanges();
+
+            return true;
+        }
+
+        public bool EagerLoadBooksWithAuthors()
+        {
+            //var authors = pubContext.Authors.Include(a => a.Books).ToList();
+
+            var cutOffDate = new DateTime(2010,1,1);
+
+            var authors = pubContext.Authors
+                .Include(a => a.Books
+                .Where(b => b.PublishDate >= cutOffDate)
+                .OrderBy(b => b.Title)).ToList();
+            
+            authors.ForEach(a =>
+            {
+                Console.WriteLine($"{a.LastName} No.Books ({a.Books.Count})");
+
+                a.Books.ForEach(b => Console.WriteLine("      "+ b.Title));
+            });
+
+            return true;
+        }
+
+        public bool Projections()
+        {
+            var anonymousTypes = pubContext.Authors
+                .Select(a => new
+                {
+                    AuthorId = a.AuthorId,
+                    Name = a.FirstName.First() + "" + a.LastName,
+                    Books = a.Books //.Where(b => b.PublishDate.Year < 2000).Count()
+                })
+                .ToList();
+
+            return true;
+        }
+
+        public bool ExplicitLoadCollection()
+        {
+            var author = pubContext.Authors.FirstOrDefault(a => a.LastName == "Howey");
+
+            pubContext.Entry(author).Collection(a => a.Books).Load();
+
+            return true;
+        }
+
+        public bool LazyLoadBooksFromAnAuthor()
+        {
+            var author = pubContext.Authors.FirstOrDefault(a => a.LastName == "Howey");
+
+            foreach (var book in pubContext.Books)
+            {
+                Console.WriteLine(book.Title);
+            }
+
+            return true;
+        }
     }
-
-
 }

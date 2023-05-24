@@ -6,8 +6,8 @@ namespace Publisher.Infrastructure
     {
         public Book GetBookById(int id);
 
-        public bool GetAllBooks();
+        public List<Book> GetAllBooks();
 
-        public bool AddBooksToAuthor(params Book[] books);
+        public bool AddManyBooks(params Book[] books);
     }
 }

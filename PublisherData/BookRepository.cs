@@ -13,8 +13,8 @@ namespace Publisher.Infrastructure
             this.pubContext = pubContext;
         }
 
-        public bool AddBooksToAuthor(params Book[] books)
-        {
+        public bool AddManyBooks(params Book[] books)
+        {           
             pubContext.Books.AddRange(books);
 
             pubContext.SaveChanges();
@@ -22,16 +22,9 @@ namespace Publisher.Infrastructure
             return true;
         }
 
-        public bool GetAllBooks()
+        public List<Book> GetAllBooks()
         {
-            var books = pubContext.Books.Include(x => x.Author).ToList();
-
-            foreach (var book in books)
-            {
-                Console.WriteLine($" Author: {book.Author.FirstName} {book.Author.LastName}, Book title: {book.Title}, Book id: {book.BookId}, published: {book.PublishDate}");
-            }
-
-            return true;
+            return pubContext.Books.Include(x => x.Author).ToList();
         }
 
         public Book GetBookById(int id)
