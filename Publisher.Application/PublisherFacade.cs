@@ -213,22 +213,24 @@ namespace Publisher.Application
             return authorDto;
         }
 
-        public List<AuthorDto> GetAuthorsWithBooks()
+        public List<AuthorWithBooksDto> GetAuthorsWithBooks()
         {
             var authors = authorRepository.GetAuthorsWithBooks();
 
-            var authorDtos = new List<AuthorDto>();
+            var authorDtos = new List<AuthorWithBooksDto>();
 
             foreach (var author in authors)
             {
-                var AuthorDto = new AuthorDto { AuthorName = author.FirstName + " " + author.LastName };
+                var authorDto = new AuthorWithBooksDto {FirstName = author.FirstName, LastName = author.LastName};
 
                 foreach (var book in author.Books)
                 {
                     var bookDto = new BookDto { Title = book.Title };
+
+                    authorDto.Books.Add(bookDto);
                 }
 
-                authorDtos.Add(AuthorDto);
+                authorDtos.Add(authorDto);
             }
 
             return authorDtos;

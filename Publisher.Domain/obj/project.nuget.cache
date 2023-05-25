@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "5yYe/yHclphJ+5bQ3UtoYzO1Hy7mG1qcGPmvSAwAwaCEAmKfAtCcuWJRZTs5lDqep/Lo4Ml6xHxJJqZqDvJtTg==",
+  "dgSpecHash": "wMa8ApBKfvz1MVKjxS3Ojof98T4tR55sbvl6HdXKDcYvo8nkPEoPbzTjWzfT5XsQdA4ebdoKZ36HYqsV6mT7dw==",
   "success": true,
-  "projectFilePath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\afortuin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.16\\microsoft.windowsdesktop.app.ref.6.0.16.nupkg.sha512",
+    "C:\\Users\\afortuin\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.16\\microsoft.netcore.app.ref.6.0.16.nupkg.sha512",
+    "C:\\Users\\afortuin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.16\\microsoft.aspnetcore.app.ref.6.0.16.nupkg.sha512"
+  ],
   "logs": []
 }

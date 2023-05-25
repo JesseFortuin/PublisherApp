@@ -5,7 +5,7 @@ using Publisher.Shared.Dtos;
 
 namespace Publisher.API.Controllers
 {
-    [Route("api/authors")]
+    [Route("api/author")]
     [ApiController]
     public class AuthorController : ControllerBase
     {
@@ -16,7 +16,7 @@ namespace Publisher.API.Controllers
             this.publisherFacade = publisherFacade;
         }
 
-        [HttpGet]
+        [HttpGet()]
         public ActionResult<IEnumerable<AuthorDto>> GetAllAuthors()
         {
             var result = publisherFacade.GetAuthors();
@@ -24,23 +24,23 @@ namespace Publisher.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("withbooks")]
-        public ActionResult<IEnumerable<AuthorDto>> GetAuthorsWithBooks()
+        [HttpGet("books")]
+        public ActionResult<IEnumerable<AuthorWithBooksDto>> GetAuthorsWithBooks()
         {
             var result = publisherFacade.GetAuthorsWithBooks();
 
             return Ok(result);
         }
         
-        [HttpGet("booksby")]
-        public ActionResult<IEnumerable<AuthorDto>> GetAuthorsByYearOfPublish(int publishedDuringAndAfter)
+        [HttpGet("books/{year}")]
+        public ActionResult<IEnumerable<AuthorDto>> GetAuthorsByYearOfPublish(int year)
         {
-            var result = publisherFacade.GetAuthorsByRecentBook(publishedDuringAndAfter);
+            var result = publisherFacade.GetAuthorsByRecentBook(year);
 
             return Ok(result);
         }
 
-        [HttpGet("authorId")]
+        [HttpGet("{authorId}")]
         public ActionResult GetAuthorById(int authorId)
         {
             var result = publisherFacade.GetAuthorById(authorId);
@@ -72,6 +72,7 @@ namespace Publisher.API.Controllers
             publisherFacade.AddAuthor(authorDto);
 
             return Ok();
+
             //return CreatedAtAction("GetAuthor", new {firstName = authorDto.FirstName}, authorDto);
         }
 

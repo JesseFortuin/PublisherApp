@@ -5,7 +5,7 @@ using Publisher.Shared.Dtos;
 namespace Publisher.API.Controllers
 {
     [ApiController]
-    [Route("api/authors/books")]
+    [Route("api/books")]
     public class BooksController : ControllerBase
     {
         private readonly IBookFacade bookFacade;
@@ -37,10 +37,10 @@ namespace Publisher.API.Controllers
             return Ok(book);
         }
 
-        [HttpGet("Title", Name = "GetBook")]
-        public ActionResult GetBookByTile(string bookTitle)
+        [HttpGet("{title}", Name = "GetBook")]
+        public ActionResult GetBookByTile(string title)
         {
-            var book = bookFacade.GetBookByTitle(bookTitle);
+            var book = bookFacade.GetBookByTitle(title);
 
             if (book == null)
             {
