@@ -6,6 +6,8 @@ namespace Publisher.Infrastructure
     {
         public Book GetBookById(int id);
 
+        public Book GetBookByTitle(string bookTitle);
+
         public List<Book> GetAllBooks();
 
         public bool AddManyBooks(params Book[] books);

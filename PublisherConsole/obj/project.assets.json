@@ -4550,23 +4550,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\afortuin\\.nuget\\packages\\": {},
-    "D:\\VS Tools\\NuGetPackages": {}
+    "C:\\Users\\jesse\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PublisherApp\\PublisherConsole\\PublisherConsole.csproj",
+      "projectUniqueName": "H:\\PublisherApp\\PublisherConsole\\PublisherConsole.csproj",
       "projectName": "PublisherConsole",
-      "projectPath": "D:\\PublisherApp\\PublisherConsole\\PublisherConsole.csproj",
-      "packagesPath": "C:\\Users\\afortuin\\.nuget\\packages\\",
-      "outputPath": "D:\\PublisherApp\\PublisherConsole\\obj\\",
+      "projectPath": "H:\\PublisherApp\\PublisherConsole\\PublisherConsole.csproj",
+      "packagesPath": "C:\\Users\\jesse\\.nuget\\packages\\",
+      "outputPath": "H:\\PublisherApp\\PublisherConsole\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\VS Tools\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\afortuin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jesse\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4581,14 +4581,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj": {
-              "projectPath": "D:\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj"
+            "H:\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj": {
+              "projectPath": "H:\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj"
             },
-            "D:\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj": {
-              "projectPath": "D:\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj"
+            "H:\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj": {
+              "projectPath": "H:\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj"
             },
-            "D:\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
-              "projectPath": "D:\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj"
+            "H:\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
+              "projectPath": "H:\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj"
             }
           }
         }
@@ -4629,30 +4629,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.16, 6.0.16]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[6.0.16, 6.0.16]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.16, 6.0.16]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.16, 6.0.16]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

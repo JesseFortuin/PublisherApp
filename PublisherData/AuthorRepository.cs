@@ -41,20 +41,16 @@ namespace Publisher.Infrastructure
             return true;
         }
 
-        public bool GetAuthors()
+        public List<Author> GetAuthors()
         {
             var authors = pubContext.Authors.ToList();
 
-            foreach (var author in authors)
-            {
-                Console.WriteLine(author.FirstName + " " + author.LastName);
-            }
-
-            return true;
+            return authors;
         }
 
         public bool RetrieveAndUpdateMultipleAuthorsLastNames(string name, string updatedLastName)
         {
+            //separate methods retrieve authors where. then send back to save
             var Authors = pubContext.Authors.Where(a => a.LastName == name).ToList();
 
             foreach (var author in Authors)
@@ -73,21 +69,11 @@ namespace Publisher.Infrastructure
             return true;
         }
 
-        public bool GetAuthorsWithBooks()
+        public List<Author> GetAuthorsWithBooks()
         {
             var authors = pubContext.Authors.Include(a => a.Books).ToList();
 
-            foreach (var author in authors)
-            {
-                Console.WriteLine(author.FirstName + " " + author.LastName);
-
-                foreach (var book in author.Books)
-                {
-                    Console.WriteLine(book.Title);
-                }
-            }
-
-            return true;
+            return authors;
         }
 
         public bool InsertAuthor(Author author)
@@ -121,6 +107,13 @@ namespace Publisher.Infrastructure
             //starts with L % representing anything that comes therafter
 
             return true;
+        }
+
+        public Author GetAuthorByName(string name)
+        {
+            var author = pubContext.Authors.FirstOrDefault(a => a.FirstName == name);
+
+            return author;
         }
 
         public bool RetrieveAndUpdateAuthor(string name, string newName)
@@ -197,24 +190,23 @@ namespace Publisher.Infrastructure
 
         public Author FindAnAuthorById(int authorId)
         {
-            using var shortLivedContext = new PubContext();
-
-            return shortLivedContext.Authors.Find(authorId);
+            return pubContext.Authors.Find(authorId);
         }
 
         public bool SaveAnAuthor(Author author)
         {
-            using var newShortLivedContext = new PubContext();
+            //using var newShortLivedContext = new PubContext();
 
-            newShortLivedContext.Authors.Update(author);
+            pubContext.Authors.Update(author);
 
-            newShortLivedContext.SaveChanges();
+            pubContext.SaveChanges();
 
             return true;
         }
 
         public bool DeleteAnAuthor(int authorId)
         {
+            //separate find
             var author = pubContext.Authors.Find(authorId);
 
             if (author == null)
@@ -228,7 +220,7 @@ namespace Publisher.Infrastructure
 
             return true;
         }
-
+        
         public bool InsertMultipleAuthors()
         {
             pubContext.Authors.AddRange(new Author { FirstName = "Ruth", LastName = "Ozeki" },
@@ -244,6 +236,7 @@ namespace Publisher.Infrastructure
 
         public bool AddNewBookToExistingAuthor(string authorsLastName, AddAuthorBookDto bookDto)
         {
+            //find
             var author = pubContext.Authors.FirstOrDefault(a => a.LastName == authorsLastName);
 
             if (author == null)

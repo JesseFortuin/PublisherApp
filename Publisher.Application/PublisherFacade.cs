@@ -152,20 +152,72 @@ namespace Publisher.Application
             return result;
         }
 
-        public bool GetAuthors()
+        public List<AuthorDto> GetAuthors()
         {
-            var result = authorRepository.GetAuthors();
+            var authors = authorRepository.GetAuthors();
 
-            return true;
+            var authorDtos = new List<AuthorDto>();
+
+            foreach(var author in authors)
+            {
+                var authorDto = new AuthorDto { AuthorName = author.FirstName + " " + author.LastName };
+
+                authorDtos.Add(authorDto);
+            }
+
+            return authorDtos;
         }
 
-        public bool GetAuthorsWithBooks()
+        public AuthorDto GetAuthorByName(string firstName)
         {
-            var result = authorRepository.GetAuthorsWithBooks();
+            var author = authorRepository.GetAuthorByName(firstName);
 
-            return true;
+            if (author == null)
+            {
+                throw new Exception("Author not found");
+            }
+
+            var authorDto = new AuthorDto
+            {
+                AuthorName = author.FirstName + " " + author.LastName
+            };
+
+            return authorDto;
         }
 
+        public AuthorDto GetAuthorById(int authorId)
+        {
+            var author = authorRepository.FindAnAuthorById(authorId);
+
+            var authorDto = new AuthorDto 
+            {
+                AuthorName = author.FirstName + " " + author.LastName
+            };
+
+            return authorDto;
+        }
+
+        public List<AuthorDto> GetAuthorsWithBooks()
+        {
+            var authors = authorRepository.GetAuthorsWithBooks();
+
+            var authorDtos = new List<AuthorDto>();
+
+            foreach (var author in authors)
+            {
+                var AuthorDto = new AuthorDto { AuthorName = author.FirstName + " " + author.LastName };
+
+                foreach (var book in author.Books)
+                {
+                    var bookDto = new BookDto { Title = book.Title };
+                }
+
+                authorDtos.Add(AuthorDto);
+            }
+
+            return authorDtos;
+        }
+        
         public bool InsertAuthor(AddAuthorDto authorDto)
         {
             if (authorDto.FirstName == null && authorDto.LastName == null)

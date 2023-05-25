@@ -17,9 +17,11 @@ namespace Publisher.Infrastructure
 
         public bool ExplicitLoadCollection();
 
-        public bool GetAuthors();
+        public List<Author> GetAuthors();
 
-        public bool GetAuthorsWithBooks();
+        public Author GetAuthorByName(string name);
+
+        public List<Author> GetAuthorsWithBooks();
 
         public bool InsertAuthor(Author author);
 

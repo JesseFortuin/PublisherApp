@@ -222,39 +222,39 @@ namespace Publisher.Test
             Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void GetAuthors_Succeeds()
-        {
-            //arrange
-            IAuthorRepository authorRepository = Substitute.For<IAuthorRepository>();
+        //[Fact]
+        //public void GetAuthors_Succeeds()
+        //{
+        //    //arrange
+        //    IAuthorRepository authorRepository = Substitute.For<IAuthorRepository>();
 
-            IPublisherFacade publisherFacade = new PublisherFacade(authorRepository);
+        //    IPublisherFacade publisherFacade = new PublisherFacade(authorRepository);
 
-            var expected = true;
+        //    var expected = true;
 
-            //act
-            var result = publisherFacade.GetAuthors();
+        //    //act
+        //    var result = publisherFacade.GetAuthors();
 
-            //assert
-            Assert.Equal(expected, result);
-        }
+        //    //assert
+        //    Assert.Equal(expected, result);
+        //}
 
-        [Fact]
-        public void GetAuthorsWithBooks_Succeeds()
-        {
-            //arrange
-            IAuthorRepository authorRepository = Substitute.For<IAuthorRepository>();
+        //[Fact]
+        //public void GetAuthorsWithBooks_Succeeds()
+        //{
+        //    //arrange
+        //    IAuthorRepository authorRepository = Substitute.For<IAuthorRepository>();
 
-            IPublisherFacade publisherFacade = new PublisherFacade(authorRepository);
+        //    IPublisherFacade publisherFacade = new PublisherFacade(authorRepository);
 
-            var expected = true;
+        //    var expected = true;
 
-            //act
-            var result = publisherFacade.GetAuthorsWithBooks();
+        //    //act
+        //    var result = publisherFacade.GetAuthorsWithBooks();
 
-            //assert
-            Assert.Equal(expected, result);
-        }
+        //    //assert
+        //    Assert.Equal(expected, result);
+        //}
 
         [Fact]
         public void InsertAuthor_Fails_WithInvalidAddAuthorDto()

@@ -31,5 +31,10 @@ namespace Publisher.Infrastructure
         {
             return pubContext.Books.Include(x => x.Author).SingleOrDefault(x => x.BookId == id);
         }
+
+        public Book GetBookByTitle(string bookTitle)
+        {
+            return pubContext.Books.Include(x => x.Author).FirstOrDefault(x => x.Title == bookTitle);
+        }
     }
 }

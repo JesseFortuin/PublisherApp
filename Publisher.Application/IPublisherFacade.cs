@@ -6,13 +6,17 @@ namespace Publisher.Application
     {
         public bool AddAuthor(AddAuthorDto authorDto);
 
-        public bool GetAuthors();
+        public List<AuthorDto> GetAuthors();
 
         public bool AddAuthorWithBook(AddAuthorDto authorDto, AddAuthorBookDto bookDto);
 
         public bool AddNewBookToExistingAuthor(string authorsLastName, AddAuthorBookDto bookDto);
 
-        public bool GetAuthorsWithBooks();
+        public List<AuthorDto> GetAuthorsWithBooks();
+
+        public AuthorDto GetAuthorById(int authorId);
+
+        public AuthorDto GetAuthorByName(string firstName);
 
         public bool EagerLoadBooksWithAuthors();
 

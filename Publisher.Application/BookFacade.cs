@@ -79,5 +79,19 @@ namespace Publisher.Application
 
             return bookDto;
         }
+
+        public BookDto GetBookByTitle(string bookTitle)
+        {
+            var book = bookRepository.GetBookByTitle(bookTitle);
+
+            var bookDto = new BookDto
+            {
+                BookId = book.BookId,
+                AuthorName = $"{book.Author.FirstName} {book.Author.LastName}",
+                Title = book.Title
+            };
+
+            return bookDto;
+        }
     }
 }

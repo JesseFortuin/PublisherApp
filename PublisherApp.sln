@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Publisher.Infrastructure", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Publisher.Application", "Publisher.Application\Publisher.Application.csproj", "{4EFCBB3D-5932-4554-BCF1-71A7C78F7E53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher.Domain", "Publisher.Domain\Publisher.Domain.csproj", "{8B942192-5EFB-4068-BE10-0DDA179506EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Publisher.Domain", "Publisher.Domain\Publisher.Domain.csproj", "{8B942192-5EFB-4068-BE10-0DDA179506EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher.Test", "Publisher.Test\Publisher.Test.csproj", "{87F036F7-0C3C-4B0D-A400-61E4CD969F5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Publisher.Test", "Publisher.Test\Publisher.Test.csproj", "{87F036F7-0C3C-4B0D-A400-61E4CD969F5C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Publisher.API", "Publisher.API\Publisher.API.csproj", "{B49112F1-D014-4439-B622-B1789F6EBCB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{87F036F7-0C3C-4B0D-A400-61E4CD969F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87F036F7-0C3C-4B0D-A400-61E4CD969F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87F036F7-0C3C-4B0D-A400-61E4CD969F5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B49112F1-D014-4439-B622-B1789F6EBCB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B49112F1-D014-4439-B622-B1789F6EBCB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B49112F1-D014-4439-B622-B1789F6EBCB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B49112F1-D014-4439-B622-B1789F6EBCB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

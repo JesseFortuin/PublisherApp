@@ -10,14 +10,20 @@ namespace PublisherData
 
         public DbSet<Book> Books { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public PubContext(DbContextOptions<PubContext> options)
+            :base(options)
         {
-            optionsBuilder.UseSqlServer(
-                "Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = PubDatabase "
-                ).LogTo(Console.WriteLine, new[] {DbLoggerCategory.Database.Command.Name},
-                LogLevel.Information)
-                .EnableSensitiveDataLogging();//specifically for demo purposes, leaks sensitive info
+            
         }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(
+        //        "Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = PubDatabase "
+        //        ).LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name },
+        //        LogLevel.Information)
+        //        .EnableSensitiveDataLogging();//specifically for demo purposes, leaks sensitive info
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

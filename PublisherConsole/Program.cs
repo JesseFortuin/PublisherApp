@@ -64,4 +64,8 @@ var bookFacade = host.Services.GetService<IBookFacade>();
 
 //publisher.EagerLoadBooksWithAuthors();
 
+var book = bookFacade.GetBookById(8);
+
+Console.WriteLine(book);
+
 //      publisher.GetAuthorsWithBooks();
