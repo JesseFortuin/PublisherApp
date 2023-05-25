@@ -23,6 +23,8 @@ namespace Publisher.Infrastructure
 
         public List<Author> GetAuthorsWithBooks();
 
+        public List<Author> GetAuthorsByRecentBook(int publishedOnAndAfter);
+
         public bool InsertAuthor(Author author);
 
         public bool QueryAggregate(string lastName);

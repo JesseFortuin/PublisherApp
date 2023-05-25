@@ -48,6 +48,12 @@ namespace Publisher.Infrastructure
             return authors;
         }
 
+        public List<Author> GetAuthorsByRecentBook(int publishedOnAndAfter)
+        {
+            return pubContext.Authors.Where(a => a.Books.Any(b => b.PublishDate.Year >= publishedOnAndAfter))
+                .ToList();
+        }
+
         public bool RetrieveAndUpdateMultipleAuthorsLastNames(string name, string updatedLastName)
         {
             //separate methods retrieve authors where. then send back to save

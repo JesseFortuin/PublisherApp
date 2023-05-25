@@ -8044,11 +8044,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\PublisherApp\\Publisher.Test\\Publisher.Test.csproj",
+      "projectUniqueName": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Test\\Publisher.Test.csproj",
       "projectName": "Publisher.Test",
-      "projectPath": "H:\\PublisherApp\\Publisher.Test\\Publisher.Test.csproj",
+      "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Test\\Publisher.Test.csproj",
       "packagesPath": "C:\\Users\\jesse\\.nuget\\packages\\",
-      "outputPath": "H:\\PublisherApp\\Publisher.Test\\obj\\",
+      "outputPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8069,11 +8069,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "H:\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj": {
-              "projectPath": "H:\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj"
+            "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj": {
+              "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj"
             },
-            "H:\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
-              "projectPath": "H:\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj"
+            "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
+              "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj"
             }
           }
         }

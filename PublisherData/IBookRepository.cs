@@ -1,4 +1,5 @@
 ﻿using Publisher.Domain.Entities;
+using Publisher.Shared.Dtos;
 
 namespace Publisher.Infrastructure
 {

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj",
+      "projectUniqueName": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj",
       "projectName": "Publisher.Shared",
-      "projectPath": "H:\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj",
+      "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj",
       "packagesPath": "C:\\Users\\jesse\\.nuget\\packages\\",
-      "outputPath": "H:\\PublisherApp\\PublisherDomain.Shared\\obj\\",
+      "outputPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

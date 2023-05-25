@@ -31,6 +31,14 @@ namespace Publisher.API.Controllers
 
             return Ok(result);
         }
+        
+        [HttpGet("booksby")]
+        public ActionResult<IEnumerable<AuthorDto>> GetAuthorsByYearOfPublish(int publishedDuringAndAfter)
+        {
+            var result = publisherFacade.GetAuthorsByRecentBook(publishedDuringAndAfter);
+
+            return Ok(result);
+        }
 
         [HttpGet("authorId")]
         public ActionResult GetAuthorById(int authorId)

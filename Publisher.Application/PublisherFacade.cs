@@ -185,6 +185,22 @@ namespace Publisher.Application
             return authorDto;
         }
 
+        public List<AuthorDto> GetAuthorsByRecentBook(int publishedOnAndAfter)
+        {
+            var authors = authorRepository.GetAuthorsByRecentBook(publishedOnAndAfter);
+
+            var authorDtos = new List<AuthorDto>();
+
+            foreach (var author in authors)
+            {
+                var authorDto = new AuthorDto { AuthorName = author.FirstName + " " + author.LastName };
+
+                authorDtos.Add(authorDto);
+            }
+
+            return authorDtos;
+        }
+
         public AuthorDto GetAuthorById(int authorId)
         {
             var author = authorRepository.FindAnAuthorById(authorId);

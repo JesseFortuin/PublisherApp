@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Publisher.Domain.Entities;
+using Publisher.Shared.Dtos;
 using PublisherData;
 
 namespace Publisher.Infrastructure
@@ -36,5 +37,6 @@ namespace Publisher.Infrastructure
         {
             return pubContext.Books.Include(x => x.Author).FirstOrDefault(x => x.Title == bookTitle);
         }
+
     }
 }

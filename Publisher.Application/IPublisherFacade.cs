@@ -1,4 +1,5 @@
-﻿using Publisher.Shared.Dtos;
+﻿using Publisher.Domain.Entities;
+using Publisher.Shared.Dtos;
 
 namespace Publisher.Application
 {
@@ -17,6 +18,8 @@ namespace Publisher.Application
         public AuthorDto GetAuthorById(int authorId);
 
         public AuthorDto GetAuthorByName(string firstName);
+
+        public List<AuthorDto> GetAuthorsByRecentBook(int publishedOnAndAfter);
 
         public bool EagerLoadBooksWithAuthors();
 

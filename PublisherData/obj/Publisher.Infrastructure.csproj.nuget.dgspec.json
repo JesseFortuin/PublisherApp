@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "H:\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj": {}
+    "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj": {}
   },
   "projects": {
-    "H:\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj": {
+    "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
+        "projectUniqueName": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
         "projectName": "Publisher.Domain",
-        "projectPath": "H:\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
+        "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj",
         "packagesPath": "C:\\Users\\jesse\\.nuget\\packages\\",
-        "outputPath": "H:\\PublisherApp\\Publisher.Domain\\obj\\",
+        "outputPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -63,14 +63,14 @@
         }
       }
     },
-    "H:\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj": {
+    "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj",
+        "projectUniqueName": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj",
         "projectName": "Publisher.Infrastructure",
-        "projectPath": "H:\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj",
+        "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherData\\Publisher.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\jesse\\.nuget\\packages\\",
-        "outputPath": "H:\\PublisherApp\\PublisherData\\obj\\",
+        "outputPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherData\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -91,11 +91,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "H:\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj": {
-                "projectPath": "H:\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj"
+              "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj": {
+                "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Domain\\Publisher.Domain.csproj"
               },
-              "H:\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
-                "projectPath": "H:\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj"
+              "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
+                "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj"
               }
             }
           }
@@ -141,14 +141,14 @@
         }
       }
     },
-    "H:\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
+    "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj",
+        "projectUniqueName": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj",
         "projectName": "Publisher.Shared",
-        "projectPath": "H:\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj",
+        "projectPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\Publisher.Shared.csproj",
         "packagesPath": "C:\\Users\\jesse\\.nuget\\packages\\",
-        "outputPath": "H:\\PublisherApp\\PublisherDomain.Shared\\obj\\",
+        "outputPath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\PublisherDomain.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
