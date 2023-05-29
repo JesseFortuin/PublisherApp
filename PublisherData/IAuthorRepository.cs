@@ -48,5 +48,11 @@ namespace Publisher.Infrastructure
         public bool DeleteAnAuthor(int authorId);
 
         public bool InsertMultipleAuthors();
+
+        public Author GetAuthorByIdWithBooks(int authorId);
+
+        public bool UpdateAuthorBook(Author author, int bookId);
+
+        public bool CascadeDelete(int authorId);
     }
 }

@@ -82,6 +82,15 @@ namespace Publisher.Infrastructure
             return authors;
         }
 
+        public bool UpdateAuthorBook(Author author, int bookId)
+        {
+            pubContext.Entry(author.Books[bookId]).State = EntityState.Modified;
+
+            pubContext.SaveChanges();
+
+            return true;
+        }
+
         public bool InsertAuthor(Author author)
         {
             pubContext.Authors.Add(author);
@@ -201,8 +210,6 @@ namespace Publisher.Infrastructure
 
         public bool SaveAnAuthor(Author author)
         {
-            //using var newShortLivedContext = new PubContext();
-
             pubContext.Authors.Update(author);
 
             pubContext.SaveChanges();
@@ -311,6 +318,25 @@ namespace Publisher.Infrastructure
             {
                 Console.WriteLine(book.Title);
             }
+
+            return true;
+        }
+
+        public Author GetAuthorByIdWithBooks(int authorId)
+        {
+            var author = pubContext.Authors.Include(a => a.Books).FirstOrDefault(a => a.AuthorId == authorId);
+
+            return author;
+        }
+
+        public bool CascadeDelete(int authorId)
+        {
+            var author = pubContext.Authors.Include(a => a.Books)
+                .FirstOrDefault(a => a.AuthorId == authorId);
+
+            pubContext.Remove(author);
+
+            pubContext.SaveChanges();
 
             return true;
         }

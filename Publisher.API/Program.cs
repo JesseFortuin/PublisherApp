@@ -14,11 +14,19 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IBookFacade, BookFacade>();
 
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+
 builder.Services.AddScoped<IPublisherFacade, PublisherFacade>();
 
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 
-builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IArtistFacade, ArtistFacade>();
+
+builder.Services.AddScoped<ICoverFacade, CoverFacade>();
+
+builder.Services.AddScoped<ICoverRepository, CoverRepository>();
+
+builder.Services.AddScoped<IArtistRepository, ArtistRepository>();
 
 builder.Services.AddDbContext<PubContext>(DBContextOptions =>
 DBContextOptions.UseSqlServer(builder.Configuration.GetConnectionString("PubContextConnection"))

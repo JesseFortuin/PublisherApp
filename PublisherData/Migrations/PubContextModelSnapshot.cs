@@ -22,6 +22,62 @@ namespace Publisher.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("ArtistCover", b =>
+                {
+                    b.Property<int>("ArtistsArtistId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CoversCoverId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ArtistsArtistId", "CoversCoverId");
+
+                    b.HasIndex("CoversCoverId");
+
+                    b.ToTable("ArtistCover");
+                });
+
+            modelBuilder.Entity("Publisher.Domain.Entities.Artist", b =>
+                {
+                    b.Property<int>("ArtistId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArtistId"));
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ArtistId");
+
+                    b.ToTable("Artists");
+
+                    b.HasData(
+                        new
+                        {
+                            ArtistId = 1,
+                            FirstName = "Pablo",
+                            LastName = "Picasso"
+                        },
+                        new
+                        {
+                            ArtistId = 2,
+                            FirstName = "Dee",
+                            LastName = "Bell"
+                        },
+                        new
+                        {
+                            ArtistId = 3,
+                            FirstName = "Katharine",
+                            LastName = "Kuharic"
+                        });
+                });
+
             modelBuilder.Entity("Publisher.Domain.Entities.Author", b =>
                 {
                     b.Property<int>("AuthorId")
@@ -78,6 +134,12 @@ namespace Publisher.Infrastructure.Migrations
                             AuthorId = 6,
                             FirstName = "Isabelle",
                             LastName = "Allende"
+                        },
+                        new
+                        {
+                            AuthorId = 7,
+                            FirstName = "Andrzej",
+                            LastName = "Sapkowski"
                         });
                 });
 
@@ -132,7 +194,70 @@ namespace Publisher.Infrastructure.Migrations
                             BasePrice = 0m,
                             PublishDate = new DateTime(1969, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Left Hand of Darkness"
+                        },
+                        new
+                        {
+                            BookId = 4,
+                            AuthorId = 7,
+                            BasePrice = 0m,
+                            PublishDate = new DateTime(2009, 10, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "The Witcher: Blood of Elves"
                         });
+                });
+
+            modelBuilder.Entity("Publisher.Domain.Entities.Cover", b =>
+                {
+                    b.Property<int>("CoverId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CoverId"));
+
+                    b.Property<string>("DesignIdeas")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("DigitalOnly")
+                        .HasColumnType("bit");
+
+                    b.HasKey("CoverId");
+
+                    b.ToTable("Covers");
+
+                    b.HasData(
+                        new
+                        {
+                            CoverId = 1,
+                            DesignIdeas = "How about a left hand in the dark?",
+                            DigitalOnly = false
+                        },
+                        new
+                        {
+                            CoverId = 2,
+                            DesignIdeas = "Should we put a clock?",
+                            DigitalOnly = true
+                        },
+                        new
+                        {
+                            CoverId = 3,
+                            DesignIdeas = "A big ear in the clouds?",
+                            DigitalOnly = false
+                        });
+                });
+
+            modelBuilder.Entity("ArtistCover", b =>
+                {
+                    b.HasOne("Publisher.Domain.Entities.Artist", null)
+                        .WithMany()
+                        .HasForeignKey("ArtistsArtistId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Publisher.Domain.Entities.Cover", null)
+                        .WithMany()
+                        .HasForeignKey("CoversCoverId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Publisher.Domain.Entities.Book", b =>

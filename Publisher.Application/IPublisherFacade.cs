@@ -23,6 +23,8 @@ namespace Publisher.Application
 
         public bool EagerLoadBooksWithAuthors();
 
+        public bool SetBookBasePrice(int authorId, int bookId, decimal price);
+
         public void QueryFilters();
 
         public bool AddManyAuthors(params AddAuthorDto[] authorDtos);

@@ -72,11 +72,9 @@ namespace Publisher.API.Controllers
             publisherFacade.AddAuthor(authorDto);
 
             return Ok();
-
-            //return CreatedAtAction("GetAuthor", new {firstName = authorDto.FirstName}, authorDto);
         }
 
-        //[HttpPost()]
+        //[HttpPost("books")]
         //public ActionResult AddAuthorWithBooks(AddAuthorDto authorDto, AddAuthorBookDto bookDto)
         //{
         //    publisherFacade.AddAuthorWithBook(authorDto, bookDto);

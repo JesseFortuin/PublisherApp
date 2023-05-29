@@ -254,6 +254,17 @@ namespace Publisher.Application
             return true;
         }
 
+        public bool SetBookBasePrice(int authorId, int bookId, decimal price)
+        {
+            var author = authorRepository.GetAuthorByIdWithBooks(authorId);
+
+            author.Books[bookId - 1].BasePrice = price;
+
+            authorRepository.UpdateAuthorBook(author, bookId -1);
+
+            return true;
+        }
+
         public void InsertMultipleAuthors()
         {
             authorRepository.InsertMultipleAuthors();
