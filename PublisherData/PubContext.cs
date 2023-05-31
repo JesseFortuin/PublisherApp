@@ -70,11 +70,34 @@ namespace PublisherData
             modelBuilder.Entity<Artist>().HasData(someArtists);
 
             var someCovers = new Cover[]{
-                new Cover {CoverId = 1, DesignIdeas="How about a left hand in the dark?", DigitalOnly=false},
-                new Cover {CoverId = 2, DesignIdeas= "Should we put a clock?", DigitalOnly=true},
-                new Cover {CoverId = 3, DesignIdeas="A big ear in the clouds?", DigitalOnly = false}};
+                new Cover {CoverId = 1, BookId = 3, DesignIdeas="How about a left hand in the dark?", DigitalOnly=false},
+                new Cover {CoverId = 2, BookId = 2, DesignIdeas= "Should we put a clock?", DigitalOnly=true},
+                new Cover {CoverId = 3, BookId = 1, DesignIdeas="A big ear in the clouds?", DigitalOnly = false}};
 
             modelBuilder.Entity<Cover>().HasData(someCovers);
+
+            //example of mapping skip navigation with payload
+            //modelBuilder.Entity<Artist>()
+            //    .HasMany(a => a.Covers)
+            //    .WithMany(c => c.Artists)
+            //    .UsingEntity<CoverAssignment>(
+            //       join => join
+            //        .HasOne<Cover>()
+            //        .WithMany()
+            //        .HasForeignKey(ca => ca.CoverId),
+            //       join => join
+            //        .HasOne<Artist>()
+            //        .WithMany()
+            //        .HasForeignKey(ca => ca.ArtistId));
+
+            //modelBuilder.Entity<CoverAssignment>()
+            //            .Property(ca => ca.DateCreated).HasDefaultValueSql("GetDate()");
+
+            //modelBuilder.Entity<CoverAssignment>()
+            //             .Property(ca => ca.CoverId).HasColumnName("CoversCoverId");
+
+            //modelBuilder.Entity<CoverAssignment>()
+            //             .Property(ca => ca.ArtistId).HasColumnName("ArtistsArtistId");
 
         }
     }

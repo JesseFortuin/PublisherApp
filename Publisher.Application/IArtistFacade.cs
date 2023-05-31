@@ -8,6 +8,6 @@ namespace Publisher.Application
 
         public ArtistDto FindArtistById(int artistId);
 
-        public bool CreateNewArtistWithNewCover(AddCoverDto coverDto, AddArtistDto artistDto);
+        public bool CreateNewArtistWithNewCover(AddCoverAndArtistDto coverAndArtistDto);
     }
 }

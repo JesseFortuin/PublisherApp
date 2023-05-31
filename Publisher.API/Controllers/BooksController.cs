@@ -5,7 +5,7 @@ using Publisher.Shared.Dtos;
 namespace Publisher.API.Controllers
 {
     [ApiController]
-    [Route("api/books")]
+    [Route("api/book")]
     public class BooksController : ControllerBase
     {
         private readonly IBookFacade bookFacade;
@@ -21,6 +21,14 @@ namespace Publisher.API.Controllers
         {
             var books = bookFacade.GetAllBooks();
             
+            return Ok (books);
+        }
+
+        [HttpGet("cover")]
+        public ActionResult<IEnumerable<BookAndCoverDto>> GetAllBooksWithCovers()
+        {
+            var books = bookFacade.GetAllBooksWithCovers();
+
             return Ok (books);
         }
 

@@ -9,7 +9,7 @@ namespace Publisher.Application
 
         public List<AuthorDto> GetAuthors();
 
-        public bool AddAuthorWithBook(AddAuthorDto authorDto, AddAuthorBookDto bookDto);
+        public bool AddAuthorWithBook(AddAuthorWithBookDto authorWithBookDto);
 
         public bool AddNewBookToExistingAuthor(string authorsLastName, AddAuthorBookDto bookDto);
 

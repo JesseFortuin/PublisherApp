@@ -44,5 +44,19 @@ namespace Publisher.Application
 
             return result;
         }
+
+        public bool RemoveArtistFromCover(int coverId, int artistId)
+        {
+            var result = coverRepository.RemoveArtistFromCover(coverId, artistId);
+
+            return result;
+        }
+
+        public bool ReassignCoverArtist(int coverId, int oldArtistId, int updatedArtistId)
+        {
+            var result = coverRepository.ReassignCoverArtist(coverId, oldArtistId, updatedArtistId);
+
+            return result;
+        }
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "831HfuVqok4uKiYdeyIN0FxqKDOGwmhQnYTrJLsFdrccffY2Z4Yf5G+Oo473S6uf3WuLWvKd26oFIRVcpF5L9A==",
+  "dgSpecHash": "aPyxpF8AAXUXvStCoba8x1AnUPPKasrAuMx/wAPWN0DIa3DvN2LG/4XvrnKFduahAo/EngE5MM5chNr4IlZXyA==",
   "success": true,
   "projectFilePath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Application\\Publisher.Application.csproj",
   "expectedPackageFiles": [

@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Publisher.Domain.Entities;
-using Publisher.Shared.Dtos;
 using PublisherData;
 
 namespace Publisher.Infrastructure
@@ -15,7 +14,7 @@ namespace Publisher.Infrastructure
         }
 
         public bool AddManyBooks(params Book[] books)
-        {           
+        {
             pubContext.Books.AddRange(books);
 
             pubContext.SaveChanges();
@@ -26,6 +25,11 @@ namespace Publisher.Infrastructure
         public List<Book> GetAllBooks()
         {
             return pubContext.Books.Include(x => x.Author).ToList();
+        }
+
+        public List<Book> GetAllBooksWithCovers()
+        {
+            return pubContext.Books.Include(b => b.Cover).ToList();
         }
 
         public Book GetBookById(int id)

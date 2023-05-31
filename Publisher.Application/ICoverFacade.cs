@@ -4,8 +4,12 @@ namespace Publisher.Application
 {
     public interface ICoverFacade
     {
-        CoverDto FindCoverById(int coverId);
+        public CoverDto FindCoverById(int coverId);
 
         public bool CreateNewCoverWithExistingArtist(int artistId, AddCoverDto coverDto);
+
+        public bool RemoveArtistFromCover(int coverId, int artistId);
+
+        public bool ReassignCoverArtist(int coverId, int oldArtistId, int updatedArtistId);
     }
 }

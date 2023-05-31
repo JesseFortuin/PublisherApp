@@ -1,5 +1,4 @@
 ﻿using Publisher.Domain.Entities;
-using Publisher.Shared.Dtos;
 
 namespace Publisher.Infrastructure
 {
@@ -12,5 +11,7 @@ namespace Publisher.Infrastructure
         public List<Book> GetAllBooks();
 
         public bool AddManyBooks(params Book[] books);
+
+        public List<Book> GetAllBooksWithCovers();
     }
 }

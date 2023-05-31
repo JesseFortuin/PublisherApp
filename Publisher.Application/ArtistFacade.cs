@@ -41,17 +41,17 @@ namespace Publisher.Application
             return result;
         }
 
-        public bool CreateNewArtistWithNewCover(AddCoverDto coverDto, AddArtistDto artistDto)
+        public bool CreateNewArtistWithNewCover(AddCoverAndArtistDto coverAndArtistDto)
         {
             var Artist = new Artist 
             {
-                FirstName = artistDto.FirstName,
-                LastName = artistDto.LastName,
+                FirstName = coverAndArtistDto.FirstName,
+                LastName = coverAndArtistDto.LastName,
             };
 
             var Cover = new Cover
             {
-                DesignIdeas = coverDto.DesignIdeas
+                DesignIdeas = coverAndArtistDto.DesignIdeas
             };
 
             var result = artistRepository.CreateNewArtistWithNewCover(Cover, Artist);

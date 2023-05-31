@@ -113,14 +113,13 @@ namespace Publisher.Test
         public void AddAuthorWithBook_Fails_WithInvalidAddAuthorDto()
         {
             //arrange
-            var authorDto = new AddAuthorDto();
 
-            var bookDto = new AddAuthorBookDto { PublishDate = DateTime.Now, Title = "Test" };
+            var authorWithBookDto = new AddAuthorWithBookDto { PublishDate = DateTime.Now, Title = "Test" };
 
             IPublisherFacade publisherFacade = new PublisherFacade(null);
 
             //act
-            var result = Assert.Throws<Exception>(() => publisherFacade.AddAuthorWithBook(authorDto, bookDto));
+            var result = Assert.Throws<Exception>(() => publisherFacade.AddAuthorWithBook(authorWithBookDto));
 
             //assert
             Assert.Equal("Author and Book is required", result.Message);
@@ -130,18 +129,17 @@ namespace Publisher.Test
         public void AddAuthorWithBook_Fails_WithInvalidAddBookDto()
         {
             //arrange
-            var authorDto = new AddAuthorDto
+
+            var authorWithBookDto = new AddAuthorWithBookDto
             {
                 FirstName = "Test",
                 LastName = "TestLastName",
             };
 
-            var bookDto = new AddAuthorBookDto();
-
             IPublisherFacade publisherFacade = new PublisherFacade(null);
 
             //act
-            var result = Assert.Throws<Exception>(() => publisherFacade.AddAuthorWithBook(authorDto, bookDto));
+            var result = Assert.Throws<Exception>(() => publisherFacade.AddAuthorWithBook(authorWithBookDto));
 
             //assert
             Assert.Equal("Author and Book is required", result.Message);
@@ -151,13 +149,13 @@ namespace Publisher.Test
         public void AddAuthorWithBook_Succeeds_WithValidAddDtos()
         {
             //arrange
-            var authorDto = new AddAuthorDto
+            var authorWithBookDto = new AddAuthorWithBookDto
             {
                 FirstName = "Test",
                 LastName = "TestLastName",
+                PublishDate = DateTime.Now,
+                Title = "Test"
             };
-
-            var bookDto = new AddAuthorBookDto { PublishDate = DateTime.Now, Title = "Test" };
 
             IAuthorRepository authorRepository = Substitute.For<IAuthorRepository>();
 
@@ -166,7 +164,7 @@ namespace Publisher.Test
             var expected = true;
             //act
 
-            var result = publisherFacade.AddAuthorWithBook(authorDto, bookDto);
+            var result = publisherFacade.AddAuthorWithBook(authorWithBookDto);
 
             //assert
             Assert.Equal(expected, result);

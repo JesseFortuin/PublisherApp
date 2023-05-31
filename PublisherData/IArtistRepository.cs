@@ -9,5 +9,7 @@ namespace Publisher.Infrastructure
         Artist FindArtistById(int ArtistId);
 
         public bool CreateNewArtistWithNewCover(Cover cover, Artist artist);
+
+        public List<Artist> GetAuthorsWithCoversAndCollaborators();
     }
 }

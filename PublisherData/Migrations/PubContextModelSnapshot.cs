@@ -202,6 +202,14 @@ namespace Publisher.Infrastructure.Migrations
                             BasePrice = 0m,
                             PublishDate = new DateTime(2009, 10, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Witcher: Blood of Elves"
+                        },
+                        new
+                        {
+                            BookId = 5,
+                            AuthorId = 7,
+                            BasePrice = 0m,
+                            PublishDate = new DateTime(2013, 10, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "The Witcher: Time of Contempt"
                         });
                 });
 
@@ -213,6 +221,9 @@ namespace Publisher.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CoverId"));
 
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
                     b.Property<string>("DesignIdeas")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -222,24 +233,30 @@ namespace Publisher.Infrastructure.Migrations
 
                     b.HasKey("CoverId");
 
+                    b.HasIndex("BookId")
+                        .IsUnique();
+
                     b.ToTable("Covers");
 
                     b.HasData(
                         new
                         {
                             CoverId = 1,
+                            BookId = 3,
                             DesignIdeas = "How about a left hand in the dark?",
                             DigitalOnly = false
                         },
                         new
                         {
                             CoverId = 2,
+                            BookId = 2,
                             DesignIdeas = "Should we put a clock?",
                             DigitalOnly = true
                         },
                         new
                         {
                             CoverId = 3,
+                            BookId = 1,
                             DesignIdeas = "A big ear in the clouds?",
                             DigitalOnly = false
                         });
@@ -271,9 +288,26 @@ namespace Publisher.Infrastructure.Migrations
                     b.Navigation("Author");
                 });
 
+            modelBuilder.Entity("Publisher.Domain.Entities.Cover", b =>
+                {
+                    b.HasOne("Publisher.Domain.Entities.Book", "Book")
+                        .WithOne("Cover")
+                        .HasForeignKey("Publisher.Domain.Entities.Cover", "BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+                });
+
             modelBuilder.Entity("Publisher.Domain.Entities.Author", b =>
                 {
                     b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("Publisher.Domain.Entities.Book", b =>
+                {
+                    b.Navigation("Cover")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

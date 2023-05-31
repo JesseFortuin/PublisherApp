@@ -33,25 +33,25 @@ namespace Publisher.Application
             return true;
         }
 
-        public bool AddAuthorWithBook(AddAuthorDto authorDto, AddAuthorBookDto bookDto)
+        public bool AddAuthorWithBook(AddAuthorWithBookDto authorWithBookDto)
         {
-            if (authorDto.FirstName == null && authorDto.LastName == null || 
-                bookDto.Title == null && bookDto.PublishDate == DateTime.MinValue)
+            if (authorWithBookDto.FirstName == null && authorWithBookDto.LastName == null ||
+                authorWithBookDto.Title == null && authorWithBookDto.PublishDate == DateTime.MinValue)
             {
                 throw new Exception("Author and Book is required");
             }
 
             var author = new Author
             {
-                FirstName = authorDto.FirstName,
-                LastName = authorDto.LastName
+                FirstName = authorWithBookDto.FirstName,
+                LastName = authorWithBookDto.LastName
             };
 
             author.Books.Add(new Book
             {
-                Title = bookDto.Title,
+                Title = authorWithBookDto.Title,
 
-                PublishDate = bookDto.PublishDate
+                PublishDate = authorWithBookDto.PublishDate
             });
 
             var result = authorRepository.AddAuthor(author);

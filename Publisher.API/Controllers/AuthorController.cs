@@ -74,13 +74,13 @@ namespace Publisher.API.Controllers
             return Ok();
         }
 
-        //[HttpPost("books")]
-        //public ActionResult AddAuthorWithBooks(AddAuthorDto authorDto, AddAuthorBookDto bookDto)
-        //{
-        //    publisherFacade.AddAuthorWithBook(authorDto, bookDto);
+        [HttpPost("books")]
+        public ActionResult AddAuthorWithBooks(AddAuthorWithBookDto authorWithBookDto)
+        {
+            publisherFacade.AddAuthorWithBook(authorWithBookDto);
 
-        //    return CreatedAtAction("GetAuthor", new { authorId = authorDto.FirstName }, authorDto);
-        //}
+            return Ok();
+        }
 
         [HttpDelete("{id}")]
         public ActionResult DeleteAuthor(int id) 

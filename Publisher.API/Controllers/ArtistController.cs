@@ -36,12 +36,12 @@ namespace Publisher.API.Controllers
             return NoContent();
         }
 
-        //[HttpPost]
-        //public ActionResult CreateNewArtistWithNewCover([FromBody]AddCoverDto coverDto, [FromBody] AddArtistDto artistDto)
-        //{
-        //    artistFacade.CreateNewArtistWithNewCover(coverDto, artistDto);
+        [HttpPost]
+        public ActionResult CreateNewArtistWithNewCover(AddCoverAndArtistDto coverAndArtistDto)
+        {
+            artistFacade.CreateNewArtistWithNewCover(coverAndArtistDto);
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
     }
 }

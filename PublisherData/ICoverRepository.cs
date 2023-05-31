@@ -7,5 +7,9 @@ namespace Publisher.Infrastructure
         Cover FindCoverById(int id);
 
         public bool CreateCoverWithExistingAuthor(Artist artist, Cover cover);
+
+        public bool RemoveArtistFromCover(int coverId, int artistId);
+
+        public bool ReassignCoverArtist(int coverId, int oldArtistId, int updatedArtistId);
     }
 }

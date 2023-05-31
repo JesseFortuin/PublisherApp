@@ -66,6 +66,26 @@ namespace Publisher.Application
             return BookDtos;
         }
 
+        public List<BookAndCoverDto> GetAllBooksWithCovers()
+        {
+            var booksAndCoversDto = new List<BookAndCoverDto>();
+
+            var bookAndCover = bookRepository.GetAllBooksWithCovers();
+
+            foreach (var book in bookAndCover)
+            {
+                var bookAndCoverDto = new BookAndCoverDto
+                {
+                    Title = book.Title,
+                    BookCover = book.Cover.DesignIdeas
+                };
+
+                booksAndCoversDto.Add(bookAndCoverDto);
+            }
+
+            return booksAndCoversDto;
+        }
+
         public BookDto GetBookById(int id)
         {
             var book = bookRepository.GetBookById(id);

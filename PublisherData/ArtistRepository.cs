@@ -1,4 +1,5 @@
-﻿using Publisher.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Publisher.Domain.Entities;
 using PublisherData;
 
 namespace Publisher.Infrastructure
@@ -48,6 +49,11 @@ namespace Publisher.Infrastructure
             pubContext.SaveChanges();
 
             return true;
+        }
+
+        public List<Artist> GetAuthorsWithCoversAndCollaborators()
+        {
+            return pubContext.Artists.Include(a => a.Covers).ToList();
         }
     }
 }

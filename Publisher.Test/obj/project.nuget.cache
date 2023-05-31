@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AmJ/H3QBgvXidveGqF9ku+8I5++gfH5HyATCDo4zTvxVEed0X6NahgBMr8SkAUbvy/BNZKFFCxYTnDgHc8ZJPw==",
+  "dgSpecHash": "BG9iYa2Kb6AFeSrX3jDHEAos3aLVz8c2UwdW3jkHvFQxxZzGly6BSQBdHfNBqUnn57rYvN90MFueaYZqvlF3KQ==",
   "success": true,
   "projectFilePath": "D:\\Dev\\Lessons\\EF Core 6 Fundamentals\\PublisherApp\\Publisher.Test\\Publisher.Test.csproj",
   "expectedPackageFiles": [
