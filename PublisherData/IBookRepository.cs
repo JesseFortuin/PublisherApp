@@ -13,5 +13,7 @@ namespace Publisher.Infrastructure
         public bool AddManyBooks(params Book[] books);
 
         public List<Book> GetAllBooksWithCovers();
+
+        public bool AddBook(Book book);
     }
 }

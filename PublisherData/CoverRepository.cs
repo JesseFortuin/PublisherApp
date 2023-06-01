@@ -18,10 +18,8 @@ namespace Publisher.Infrastructure
             return pubContext.Covers.Find(id);
         }
 
-        public bool CreateCoverWithExistingAuthor(Artist artist, Cover cover)
+        public bool AddCover(Cover cover)
         {
-            cover.Artists.Add(artist);
-
             pubContext.Covers.Add(cover);
 
             pubContext.SaveChanges();
@@ -57,6 +55,32 @@ namespace Publisher.Infrastructure
             pubContext.SaveChanges();
 
             return true;
+        }
+
+        public bool AddCoverToExistingBook(Cover cover, Book book)
+        {
+            book.Cover = cover;
+
+            pubContext.SaveChanges();
+
+            return true;
+        }
+
+        public Book GetBookWithCover(int bookId)
+        {
+            var book = pubContext.Books.Include(b => b.Cover)
+                .FirstOrDefault(b => b.BookId == bookId);
+
+            return book;
+        }
+
+        public Cover GetCoverWithArtist(int coverId, int artistId)
+        {
+            var cover = pubContext.Covers.Include(c => c.Artists
+            .Where(a => a.ArtistId == artistId))
+            .FirstOrDefault(c => c.CoverId == coverId);
+
+            return cover;
         }
     }
 }

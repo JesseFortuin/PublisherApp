@@ -9,8 +9,6 @@ namespace Publisher.Infrastructure
 
         public bool AddAuthorWithBook(Author author);
 
-        public bool AddNewBookToExistingAuthor(string authorsLastName, AddAuthorBookDto bookDto);
-
         public bool AddManyAuthors(params Author[] authors);
 
         public bool EagerLoadBooksWithAuthors();
@@ -20,6 +18,8 @@ namespace Publisher.Infrastructure
         public List<Author> GetAuthors();
 
         public Author GetAuthorByName(string name);
+
+        public Author GetAuthorByLastName(string lastName);
 
         public List<Author> GetAuthorsWithBooks();
 
@@ -31,9 +31,7 @@ namespace Publisher.Infrastructure
 
         public bool QueryFilters(string name, string filters);
 
-        public bool RetrieveAndUpdateAuthor(string name, string newName);
-
-        public bool RetrieveAndUpdateMultipleAuthorsLastNames(string name, string updatedLastName);
+        public List<Author> RetrieveAuthorsByLastName(string name);
 
         public bool SkipAndTakeAuthors(int groupSize);
 
@@ -54,5 +52,7 @@ namespace Publisher.Infrastructure
         public bool UpdateAuthorBook(Author author, int bookId);
 
         public bool CascadeDelete(int authorId);
+
+        public List<Author> SimpleRawSql();
     }
 }

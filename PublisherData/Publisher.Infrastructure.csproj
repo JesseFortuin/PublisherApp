@@ -19,4 +19,8 @@
     <ProjectReference Include="..\PublisherDomain.Shared\Publisher.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Database\StoredProc\" />
+  </ItemGroup>
+
 </Project>

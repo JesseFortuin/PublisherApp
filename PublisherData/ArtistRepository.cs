@@ -18,33 +18,18 @@ namespace Publisher.Infrastructure
             return pubContext.Artists.Find(artistId);
         }
 
-        public bool ConnectExistingArtistAndCoverArtist(Cover cover, Artist artist)
+        public bool AddCover(Cover cover)
         {
-            //var artistA = pubContext.Artists.Find(1);
-
-            //var artistB = pubContext.Artists.Find(2);
-
-            //var coverA = pubContext.Covers.Find(1);
-
-            //coverA.Artists.Add(artistA);
-
-            //coverA.Artists.Add(artistB);
-            cover.Artists.Add(artist);
+            pubContext.Covers.Add(cover);
 
             pubContext.SaveChanges();
 
             return true;
         }
 
-        public bool CreateNewArtistWithNewCover(Cover cover, Artist artist)
+        public bool AddArtist(Artist artist)
         {
-            var newArtist = artist;
-
-            var newCover = cover;
-
-            newArtist.Covers.Add(newCover);
-
-            pubContext.Artists.Add(newArtist);
+            pubContext.Artists.Add(artist);
 
             pubContext.SaveChanges();
 

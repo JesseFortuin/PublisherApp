@@ -11,5 +11,7 @@ namespace Publisher.Application
         public bool RemoveArtistFromCover(int coverId, int artistId);
 
         public bool ReassignCoverArtist(int coverId, int oldArtistId, int updatedArtistId);
+
+        public bool AddCoverToExistingBook(int bookId, AddCoverDto coverDto);
     }
 }

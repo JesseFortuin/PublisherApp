@@ -1,5 +1,4 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using Publisher.Domain.Entities;
+﻿using Publisher.Domain.Entities;
 using Publisher.Infrastructure;
 using Publisher.Shared.Dtos;
 
@@ -15,6 +14,27 @@ namespace Publisher.Application
         {
             this.bookRepository = bookRepository;
             this.authorRepository = authorRepository;
+        }
+
+        public bool AddBookWithCover(AddBookWithCoverDto bookWithCover)
+        {
+            var book = new Book
+            {
+                AuthorId = 1,
+                Title = bookWithCover.Title,
+                PublishDate = bookWithCover.PublishDate,
+            };
+
+            var cover = new Cover
+            {
+                DesignIdeas = bookWithCover.DesignIdeas
+            };
+
+            book.Cover = cover;
+
+            var result = bookRepository.AddBook(book);
+
+            return result;
         }
 
         public bool AddManyBooks(params AddBookDto[] booksDto)
@@ -48,9 +68,9 @@ namespace Publisher.Application
         public List<BookDto> GetAllBooks()
         {
             var Books = bookRepository.GetAllBooks();
-            
+
             var BookDtos = new List<BookDto>();
-            
+
             foreach (var book in Books)
             {
                 var bookDto = new BookDto

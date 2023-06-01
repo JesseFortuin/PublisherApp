@@ -4,11 +4,11 @@ namespace Publisher.Infrastructure
 {
     public interface IArtistRepository
     {
-        bool ConnectExistingArtistAndCoverArtist(Cover cover, Artist artist);
+        bool AddCover(Cover cover);
 
         Artist FindArtistById(int ArtistId);
 
-        public bool CreateNewArtistWithNewCover(Cover cover, Artist artist);
+        public bool AddArtist(Artist artist);
 
         public List<Artist> GetAuthorsWithCoversAndCollaborators();
     }

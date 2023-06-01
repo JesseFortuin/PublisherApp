@@ -14,5 +14,7 @@ namespace Publisher.Application
         public bool AddManyBooks(params AddBookDto[] books);
 
         public List<BookAndCoverDto> GetAllBooksWithCovers();
+
+        public bool AddBookWithCover(AddBookWithCoverDto bookWithCover);
     }
 }

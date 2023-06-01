@@ -96,7 +96,16 @@ namespace Publisher.Application
                 throw new Exception("Valid book info required");
             }
 
-            var result = authorRepository.AddNewBookToExistingAuthor(authorsLastName, bookDto);
+            var author = authorRepository.GetAuthorByLastName(authorsLastName);
+
+            author.Books.Add(
+                new Book 
+                { 
+                    Title = bookDto.Title, 
+                    PublishDate = new DateTime(2012, 1, 1) 
+                });
+
+            var result = authorRepository.AddAuthor(author);
 
             return result;
         }
@@ -303,9 +312,18 @@ namespace Publisher.Application
                 throw new Exception("New name is required");
             }
 
-            var result = authorRepository.RetrieveAndUpdateAuthor(name, newName);
+            var author = authorRepository.GetAuthorByName(name);
 
-            return true;
+            if (author == null)
+            {
+                return false;
+            }
+
+            author.FirstName = newName;
+
+            var result = authorRepository.AddAuthor(author);
+
+            return result;
         }
 
         public bool RetrieveAndUpdateMultipleAuthorsLastNames(string lastName, string updatedLastName)
@@ -320,9 +338,20 @@ namespace Publisher.Application
                 throw new Exception("New name is required");
             }
 
-            var result = authorRepository.RetrieveAndUpdateMultipleAuthorsLastNames(lastName, updatedLastName);
+            var authors = authorRepository.RetrieveAuthorsByLastName(lastName);
 
-            return true;
+            var authorList = new List<Author>();
+
+            foreach (var author in authors)
+            {
+                author.LastName = updatedLastName;
+
+                authorList.Add(author);
+            }
+
+            var result = authorRepository.AddManyAuthors(authorList.ToArray());
+
+            return result;
         }
 
         public bool SkipAndTakeAuthors(int groupSize)
@@ -342,6 +371,22 @@ namespace Publisher.Application
             var result = authorRepository.SortAuthors();
 
             return true;
+        }
+
+        public List<AuthorDto> GetAuthorsWithSqlRaw()
+        {
+            var authors = authorRepository.SimpleRawSql();
+
+            var authorDtos = new List<AuthorDto>();
+
+            foreach (var author in authors)
+            {
+                var authorDto = new AuthorDto { AuthorName = author.FirstName + " " + author.LastName };
+
+                authorDtos.Add(authorDto);
+            }
+
+            return authorDtos;
         }
     }
 }

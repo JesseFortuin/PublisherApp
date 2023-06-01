@@ -54,25 +54,10 @@ namespace Publisher.Infrastructure
                 .ToList();
         }
 
-        public bool RetrieveAndUpdateMultipleAuthorsLastNames(string name, string updatedLastName)
+        public List<Author> RetrieveAuthorsByLastName(string lastName)
         {
             //separate methods retrieve authors where. then send back to save
-            var Authors = pubContext.Authors.Where(a => a.LastName == name).ToList();
-
-            foreach (var author in Authors)
-            {
-                author.LastName = updatedLastName;
-            }
-
-            Console.WriteLine("Before" + pubContext.ChangeTracker.DebugView.ShortView);
-
-            pubContext.ChangeTracker.DetectChanges();
-
-            Console.WriteLine("After" + pubContext.ChangeTracker.DebugView.ShortView);
-
-            pubContext.SaveChanges();
-
-            return true;
+            return pubContext.Authors.Where(a => a.LastName == lastName).ToList();
         }
 
         public List<Author> GetAuthorsWithBooks()
@@ -89,6 +74,17 @@ namespace Publisher.Infrastructure
             pubContext.SaveChanges();
 
             return true;
+        }
+
+        public Author MultiLevelInclude(int authorId)
+        {
+            var authorGraph = pubContext.Authors.AsNoTracking()
+                .Include(a => a.Books)
+                .ThenInclude(b => b.Cover)
+                .ThenInclude(c => c.Artists)
+                .FirstOrDefault(a => a.AuthorId == authorId);
+
+            return authorGraph;
         }
 
         public bool InsertAuthor(Author author)
@@ -131,20 +127,11 @@ namespace Publisher.Infrastructure
             return author;
         }
 
-        public bool RetrieveAndUpdateAuthor(string name, string newName)
+        public Author GetAuthorByLastName(string lastName)
         {
-            var author = pubContext.Authors.FirstOrDefault(a => a.FirstName == name);
+            var author = pubContext.Authors.FirstOrDefault(a => a.LastName == lastName);
 
-            if (author == null)
-            {
-                return false;
-            }
-
-            author.FirstName = newName;
-
-            pubContext.SaveChanges();
-
-            return true;
+            return author;
         }
 
         public bool SkipAndTakeAuthors(int groupSize)
@@ -247,25 +234,6 @@ namespace Publisher.Infrastructure
             return true;
         }
 
-        public bool AddNewBookToExistingAuthor(string authorsLastName, AddAuthorBookDto bookDto)
-        {
-            //find
-            var author = pubContext.Authors.FirstOrDefault(a => a.LastName == authorsLastName);
-
-            if (author == null)
-            {
-                return false;
-            }
-
-            author.Books.Add(
-                new Book { Title = bookDto.Title, PublishDate = new DateTime(2012, 1, 1)}
-                );
-
-            pubContext.SaveChanges();
-
-            return true;
-        }
-
         public bool EagerLoadBooksWithAuthors()
         {
             //var authors = pubContext.Authors.Include(a => a.Books).ToList();
@@ -339,6 +307,11 @@ namespace Publisher.Infrastructure
             pubContext.SaveChanges();
 
             return true;
+        }
+
+        public List<Author> SimpleRawSql()
+        {
+            return pubContext.Authors.FromSqlRaw("Exec SelectAllAuthors").ToList();
         }
     }
 }

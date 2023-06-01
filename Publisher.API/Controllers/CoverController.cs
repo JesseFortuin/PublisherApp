@@ -28,10 +28,18 @@ namespace Publisher.API.Controllers
             return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPost("artist")]
         public ActionResult CreateNewCoverWithExistingArtist(int artistId, AddCoverDto coverDto)
         {
             var result = coverFacade.CreateNewCoverWithExistingArtist(artistId, coverDto);
+
+            return Ok();
+        }
+
+        [HttpPost("book")]
+        public ActionResult CreateCoverWithExistingBook(int bookId, AddCoverDto coverDto)
+        {
+            var result = coverFacade.AddCoverToExistingBook(bookId, coverDto);
 
             return Ok();
         }

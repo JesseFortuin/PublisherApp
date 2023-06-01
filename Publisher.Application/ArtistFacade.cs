@@ -36,25 +36,29 @@ namespace Publisher.Application
 
             var cover = coverRepository.FindCoverById(coverId);
 
-            var result = artistRepository.ConnectExistingArtistAndCoverArtist(cover, artist);
+            cover.Artists.Add(artist);
+
+            var result = artistRepository.AddCover(cover);
 
             return result;
         }
 
         public bool CreateNewArtistWithNewCover(AddCoverAndArtistDto coverAndArtistDto)
         {
-            var Artist = new Artist 
+            var artist = new Artist 
             {
                 FirstName = coverAndArtistDto.FirstName,
                 LastName = coverAndArtistDto.LastName,
             };
 
-            var Cover = new Cover
+            var cover = new Cover
             {
                 DesignIdeas = coverAndArtistDto.DesignIdeas
             };
 
-            var result = artistRepository.CreateNewArtistWithNewCover(Cover, Artist);
+            artist.Covers.Add(cover);
+
+            var result = artistRepository.AddArtist(artist);
 
             return result;
         }

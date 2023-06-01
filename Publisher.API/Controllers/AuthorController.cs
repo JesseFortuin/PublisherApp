@@ -23,6 +23,14 @@ namespace Publisher.API.Controllers
 
             return Ok(result);
         }
+        
+        [HttpGet("sql")]
+        public ActionResult<IEnumerable<AuthorDto>> GetAllAuthorsWithSql()
+        {
+            var result = publisherFacade.GetAuthorsWithSqlRaw();
+
+            return Ok(result);
+        }
 
         [HttpGet("books")]
         public ActionResult<IEnumerable<AuthorWithBooksDto>> GetAuthorsWithBooks()

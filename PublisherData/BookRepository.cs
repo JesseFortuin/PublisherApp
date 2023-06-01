@@ -13,6 +13,15 @@ namespace Publisher.Infrastructure
             this.pubContext = pubContext;
         }
 
+        public bool AddBook(Book book)
+        {
+            pubContext.Books.Add(book);
+
+            pubContext.SaveChanges();
+
+            return true;
+        }
+
         public bool AddManyBooks(params Book[] books)
         {
             pubContext.Books.AddRange(books);
