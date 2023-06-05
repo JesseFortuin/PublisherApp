@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Publisher.Domain.Entities;
 using PublisherData;
+using System.Net;
 
 namespace Publisher.Infrastructure
 {
@@ -21,6 +22,15 @@ namespace Publisher.Infrastructure
         public bool AddCover(Cover cover)
         {
             pubContext.Covers.Add(cover);
+
+            pubContext.SaveChanges();
+
+            return true;
+        }
+
+        public bool UpdateCover(Cover cover)
+        {
+            pubContext.Update(cover);
 
             pubContext.SaveChanges();
 

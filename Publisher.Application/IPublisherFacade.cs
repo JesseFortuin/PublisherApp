@@ -5,47 +5,47 @@ namespace Publisher.Application
 {
     public interface IPublisherFacade
     {
-        public bool AddAuthor(AddAuthorDto authorDto);
+        public ApiResponseDto<bool> AddAuthor(AddAuthorDto authorDto);
 
-        public List<AuthorDto> GetAuthors();
+        public ApiResponseDto<List<AuthorDto>> GetAuthors();
 
-        public List<AuthorDto> GetAuthorsWithSqlRaw();
+        public ApiResponseDto<List<AuthorDto>> GetAuthorsWithSqlRaw();
 
-        public bool AddAuthorWithBook(AddAuthorWithBookDto authorWithBookDto);
+        public ApiResponseDto<bool> AddAuthorWithBook(AddAuthorWithBookDto authorWithBookDto);
 
-        public bool AddNewBookToExistingAuthor(string authorsLastName, AddAuthorBookDto bookDto);
+        public ApiResponseDto<bool> AddNewBookToExistingAuthor(string authorsLastName, AddAuthorBookDto bookDto);
 
-        public List<AuthorWithBooksDto> GetAuthorsWithBooks();
+        public ApiResponseDto<List<AuthorWithBooksDto>> GetAuthorsWithBooks();
 
-        public AuthorDto GetAuthorById(int authorId);
+        public ApiResponseDto<AuthorDto> GetAuthorById(int authorId);
 
-        public AuthorDto GetAuthorByName(string firstName);
+        public ApiResponseDto<AuthorDto> GetAuthorByName(string firstName);
 
-        public List<AuthorDto> GetAuthorsByRecentBook(int publishedOnAndAfter);
+        public ApiResponseDto<List<AuthorDto>> GetAuthorsByRecentBook(int publishedOnAndAfter);
 
-        public bool EagerLoadBooksWithAuthors();
+        public ApiResponseDto<bool> EagerLoadBooksWithAuthors();
 
-        public bool SetBookBasePrice(int authorId, int bookId, decimal price);
+        public ApiResponseDto<bool> SetBookBasePrice(int authorId, int bookId, decimal price);
 
         public void QueryFilters();
 
-        public bool AddManyAuthors(params AddAuthorDto[] authorDtos);
+        public ApiResponseDto<bool> AddManyAuthors(params AddAuthorDto[] authorDtos);
 
-        public bool RetrieveAndUpdateMultipleAuthorsLastNames(string lastName, string updatedLastName);
+        public ApiResponseDto<bool> RetrieveAndUpdateMultipleAuthorsLastNames(string lastName, string updatedLastName);
 
-        public bool SkipAndTakeAuthors(int groupSize);
+        public ApiResponseDto<bool> SkipAndTakeAuthors(int groupSize);
 
-        public bool SortAuthorsDecendingOrder();
+        public ApiResponseDto<bool> SortAuthorsDecendingOrder();
 
-        public bool QueryAggregate(string lastName);
+        public ApiResponseDto<bool> QueryAggregate(string lastName);
 
-        public bool InsertAuthor(AddAuthorDto authorDto);
+        public ApiResponseDto<bool> InsertAuthor(AddAuthorDto authorDto);
 
-        public bool RetrieveAndUpdateAuthor(string name, string newName);
+        public ApiResponseDto<bool> RetrieveAndUpdateAuthor(string name, string newName);
 
-        public void CoordinatedRetrieveAndUpdateAuthor(int authorId, string originalName, string updatedName);
+        public ApiResponseDto<bool> CoordinatedRetrieveAndUpdateAuthor(int authorId, string originalName, string updatedName);
 
-        public bool DeleteAuthor(int authorId);
+        public ApiResponseDto<bool> DeleteAuthor(int authorId);
 
         public void InsertMultipleAuthors();
     }

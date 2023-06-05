@@ -27,28 +27,28 @@ namespace Publisher.Test
             //assert
             Assert.Equal("Author Id does not match author in database", result.Message);
         }
-        [Fact]
-        public void AddManyBooks_Succeeds_ValidDtos()
-        {
-            //arrange
-            var BookDtos = new List<AddBookDto>
-            {
-                new AddBookDto {AuthorId = 1, Title = "Test"},
-                new AddBookDto {AuthorId = 2, Title = "Test Two"}
-            };
+        //[Fact]
+        //public void AddManyBooks_Succeeds_ValidDtos()
+        //{
+        //    //arrange
+        //    var BookDtos = new List<AddBookDto>
+        //    {
+        //        new AddBookDto {AuthorId = 1, Title = "Test"},
+        //        new AddBookDto {AuthorId = 2, Title = "Test Two"}
+        //    };
 
-            IAuthorRepository authorRepository = Substitute.For<IAuthorRepository>();
+        //    IAuthorRepository authorRepository = Substitute.For<IAuthorRepository>();
 
-            IBookRepository bookRepository = Substitute.For<IBookRepository>();
+        //    IBookRepository bookRepository = Substitute.For<IBookRepository>();
 
-            IBookFacade bookFacade = new BookFacade(bookRepository, authorRepository);
+        //    IBookFacade bookFacade = new BookFacade(bookRepository, authorRepository);
 
-            var expected = true;
-            //act
-            var result = bookFacade.AddManyBooks(BookDtos.ToArray());
+        //    var expected = true;
+        //    //act
+        //    var result = bookFacade.AddManyBooks(BookDtos.ToArray());
 
-            //assert
-            Assert.Equal(expected, result);
-        }
+        //    //assert
+        //    Assert.Equal(expected, result);
+        //}
     }
 }

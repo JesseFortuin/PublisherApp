@@ -16,7 +16,7 @@ namespace Publisher.API.Controllers
         }
 
         [HttpGet("{artistId}")]
-        public ActionResult FindArtistById(int artistId)
+        public ActionResult<ApiResponseDto<ArtistDto>> FindArtistById(int artistId)
         {
             var result = artistFacade.FindArtistById(artistId);
 
@@ -29,19 +29,19 @@ namespace Publisher.API.Controllers
         }
 
         [HttpPatch]
-        public ActionResult AddExistingArtistToCover(int ArtistId, int CoverId)
+        public ActionResult<ApiResponseDto<bool>> AddExistingArtistToCover(int ArtistId, int CoverId)
         {
             var result = artistFacade.AddExistingArtistToCover(ArtistId, CoverId);
 
-            return NoContent();
+            return Ok(result);
         }
 
         [HttpPost]
-        public ActionResult CreateNewArtistWithNewCover(AddCoverAndArtistDto coverAndArtistDto)
+        public ActionResult<ApiResponseDto<bool>> CreateNewArtistWithNewCover(AddArtistWithNewCoverDto coverAndArtistDto)
         {
-            artistFacade.CreateNewArtistWithNewCover(coverAndArtistDto);
+            var result = artistFacade.AddArtistWithNewCover(coverAndArtistDto);
 
-            return Ok();
+            return Ok(result);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Publisher.API.Controllers
         }
 
         [HttpGet("{coverId}")]
-        public ActionResult GetCoverById(int coverId)
+        public ActionResult<ApiResponseDto<CoverDto>> GetCoverById(int coverId)
         {
             var result = coverFacade.FindCoverById(coverId);
 
@@ -29,45 +29,55 @@ namespace Publisher.API.Controllers
         }
 
         [HttpPost("artist")]
-        public ActionResult CreateNewCoverWithExistingArtist(int artistId, AddCoverDto coverDto)
+        public ActionResult<ApiResponseDto<bool>> CreateNewCoverWithExistingArtist(int artistId, int bookId, AddCoverDto coverDto)
         {
-            var result = coverFacade.CreateNewCoverWithExistingArtist(artistId, coverDto);
+            var result = coverFacade.CreateNewCoverWithExistingArtist(artistId, bookId, coverDto);
 
-            return Ok();
+            if (result == null)
+            {
+                return NotFound(result);
+            }
+
+            return Ok(result);
         }
 
         [HttpPost("book")]
-        public ActionResult CreateCoverWithExistingBook(int bookId, AddCoverDto coverDto)
+        public ActionResult<ApiResponseDto<bool>> CreateCoverWithExistingBook(int bookId, AddCoverDto coverDto)
         {
             var result = coverFacade.AddCoverToExistingBook(bookId, coverDto);
 
-            return Ok();
+            if (result == null)
+            {
+                NotFound(result);
+            }
+
+            return Ok(result);
         }
 
         [HttpDelete]
-        public ActionResult RemoveArtistFromCover(int coverId, int artistId) 
+        public ActionResult<ApiResponseDto<bool>> RemoveArtistFromCover(int coverId, int artistId) 
         { 
             var result = coverFacade.RemoveArtistFromCover(coverId, artistId);
 
-            if (result == false)
+            if (result == null)
             {
-                return NotFound();
+                return NotFound(result);
             }
 
             return NoContent();
         }
 
         [HttpPatch]
-        public ActionResult ReassignCoverArtist(int coverId, int oldArtistId, int updatedArtistId)
+        public ActionResult<ApiResponseDto<bool>> ReassignCoverArtist(int coverId, int oldArtistId, int updatedArtistId)
         {
             var result = coverFacade.ReassignCoverArtist(coverId, oldArtistId, updatedArtistId);
         
-            if (result == false)
+            if (result == null)
             {
-                return NotFound();
+                return NotFound(result);
             }        
 
-            return Ok();
+            return Ok(result);
         }
     }
 }

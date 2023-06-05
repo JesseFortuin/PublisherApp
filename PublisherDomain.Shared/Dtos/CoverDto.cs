@@ -5,5 +5,6 @@
         public int CoverId { get; set; }
         public string DesignIdeas { get; set; }
         public bool OnlyDigital { get; set; }
+        public int BookId { get; set; }
     }
 }

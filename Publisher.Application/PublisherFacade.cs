@@ -15,11 +15,11 @@ namespace Publisher.Application
             this.authorRepository = authorRepository;
         }
 
-        public bool AddAuthor(AddAuthorDto authorDto)
+        public ApiResponseDto<bool> AddAuthor(AddAuthorDto authorDto)
         {
             if (authorDto.FirstName == null && authorDto.LastName == null)
             {
-                throw new Exception("FirstName and LastName required");
+                return new ApiResponseDto<bool>("FirstName and LastName required");
             }
 
             var author = new Author
@@ -30,15 +30,15 @@ namespace Publisher.Application
 
             var result = authorRepository.AddAuthor(author);
 
-            return true;
+            return new ApiResponseDto<bool>(result);
         }
 
-        public bool AddAuthorWithBook(AddAuthorWithBookDto authorWithBookDto)
+        public ApiResponseDto<bool> AddAuthorWithBook(AddAuthorWithBookDto authorWithBookDto)
         {
             if (authorWithBookDto.FirstName == null && authorWithBookDto.LastName == null ||
                 authorWithBookDto.Title == null && authorWithBookDto.PublishDate == DateTime.MinValue)
             {
-                throw new Exception("Author and Book is required");
+                return new ApiResponseDto<bool>("Author and Book is required");
             }
 
             var author = new Author
@@ -56,10 +56,10 @@ namespace Publisher.Application
 
             var result = authorRepository.AddAuthor(author);
 
-            return true;
+            return new ApiResponseDto<bool>(result);
         }
 
-        public bool AddManyAuthors(params AddAuthorDto[] authorDtos)
+        public ApiResponseDto<bool> AddManyAuthors(params AddAuthorDto[] authorDtos)
         {
             var authors = new List<Author>();
 
@@ -67,7 +67,7 @@ namespace Publisher.Application
             {
                 if (authorDto.FirstName == null && authorDto.LastName == null)
                 {
-                    throw new Exception("FirstName and LastName of author or authors required");
+                    return new ApiResponseDto<bool>("FirstName and LastName of author or authors required");
                 }
 
                 var author = new Author
@@ -81,19 +81,19 @@ namespace Publisher.Application
 
             var result = authorRepository.AddManyAuthors(authors.ToArray());
 
-            return result;
+            return new ApiResponseDto<bool>(result);
         }
 
-        public bool AddNewBookToExistingAuthor(string authorsLastName, AddAuthorBookDto bookDto)
+        public ApiResponseDto<bool> AddNewBookToExistingAuthor(string authorsLastName, AddAuthorBookDto bookDto)
         {
             if (string.IsNullOrWhiteSpace(authorsLastName))
             {
-                throw new Exception("Author's lastname is required");
+                return new ApiResponseDto<bool>("Author's lastname is required");
             }
 
             if (bookDto.Title == null && bookDto.Title == null) 
             {
-                throw new Exception("Valid book info required");
+                return new ApiResponseDto<bool>("Valid book info required");
             }
 
             var author = authorRepository.GetAuthorByLastName(authorsLastName);
@@ -107,24 +107,24 @@ namespace Publisher.Application
 
             var result = authorRepository.AddAuthor(author);
 
-            return result;
+            return new ApiResponseDto<bool>(result);
         }
 
-        public void CoordinatedRetrieveAndUpdateAuthor(int authorId, string originalName, string updatedName)
+        public ApiResponseDto<bool> CoordinatedRetrieveAndUpdateAuthor(int authorId, string originalName, string updatedName)
         {
             if (authorId <= 0)
             {
-                throw new Exception("Insert valid Id");
+                return new ApiResponseDto<bool>("Insert valid Id");
             }
 
             if (string.IsNullOrWhiteSpace(originalName))
             {
-                throw new Exception("Insert name you would like to change");
+                return new ApiResponseDto<bool>("Insert name you would like to change");
             }
 
             if (string.IsNullOrWhiteSpace(updatedName))
             {
-                throw new Exception("New name is required");
+                return new ApiResponseDto<bool>("New name is required");
             }
 
             var author = authorRepository.FindAnAuthorById(authorId);
@@ -132,36 +132,38 @@ namespace Publisher.Application
             if (author?.FirstName == originalName) 
             {
                 author.FirstName = updatedName;
-                
+                               
                 authorRepository.SaveAnAuthor(author);
             }
+
+            return new ApiResponseDto<bool>("Author name updated");
         }
 
-        public bool DeleteAuthor(int authorId)
+        public ApiResponseDto<bool> DeleteAuthor(int authorId)
         {
             if (authorId <= 0)
             {
-                throw new Exception("Insert valid Id");
+                return new ApiResponseDto<bool>("Insert valid Id");
             }
 
             var result = authorRepository.DeleteAnAuthor(authorId);
             
             if (!result)
             {
-                throw new Exception("Author not found in Database");
+                return new ApiResponseDto<bool>("Author not found in Database");
             }
 
-            return result;        
+            return new ApiResponseDto<bool>(result);
         }
 
-        public bool EagerLoadBooksWithAuthors()
+        public ApiResponseDto<bool> EagerLoadBooksWithAuthors()
         {
             var result = authorRepository.EagerLoadBooksWithAuthors();
 
-            return result;
+            return new ApiResponseDto<bool>(result);
         }
 
-        public List<AuthorDto> GetAuthors()
+        public ApiResponseDto<List<AuthorDto>> GetAuthors()
         {
             var authors = authorRepository.GetAuthors();
 
@@ -174,10 +176,10 @@ namespace Publisher.Application
                 authorDtos.Add(authorDto);
             }
 
-            return authorDtos;
+            return new ApiResponseDto<List<AuthorDto>>(authorDtos);
         }
 
-        public AuthorDto GetAuthorByName(string firstName)
+        public ApiResponseDto<AuthorDto> GetAuthorByName(string firstName)
         {
             var author = authorRepository.GetAuthorByName(firstName);
 
@@ -191,10 +193,10 @@ namespace Publisher.Application
                 AuthorName = author.FirstName + " " + author.LastName
             };
 
-            return authorDto;
+            return new ApiResponseDto<AuthorDto>(authorDto);
         }
 
-        public List<AuthorDto> GetAuthorsByRecentBook(int publishedOnAndAfter)
+        public ApiResponseDto<List<AuthorDto>> GetAuthorsByRecentBook(int publishedOnAndAfter)
         {
             var authors = authorRepository.GetAuthorsByRecentBook(publishedOnAndAfter);
 
@@ -207,10 +209,10 @@ namespace Publisher.Application
                 authorDtos.Add(authorDto);
             }
 
-            return authorDtos;
+            return new ApiResponseDto<List<AuthorDto>>(authorDtos);
         }
 
-        public AuthorDto GetAuthorById(int authorId)
+        public ApiResponseDto<AuthorDto> GetAuthorById(int authorId)
         {
             var author = authorRepository.FindAnAuthorById(authorId);
 
@@ -219,10 +221,10 @@ namespace Publisher.Application
                 AuthorName = author.FirstName + " " + author.LastName
             };
 
-            return authorDto;
+            return new ApiResponseDto<AuthorDto>(authorDto);
         }
 
-        public List<AuthorWithBooksDto> GetAuthorsWithBooks()
+        public ApiResponseDto<List<AuthorWithBooksDto>> GetAuthorsWithBooks()
         {
             var authors = authorRepository.GetAuthorsWithBooks();
 
@@ -242,14 +244,14 @@ namespace Publisher.Application
                 authorDtos.Add(authorDto);
             }
 
-            return authorDtos;
+            return new ApiResponseDto<List<AuthorWithBooksDto>>(authorDtos);
         }
         
-        public bool InsertAuthor(AddAuthorDto authorDto)
+        public ApiResponseDto<bool> InsertAuthor(AddAuthorDto authorDto)
         {
             if (authorDto.FirstName == null && authorDto.LastName == null)
             {
-                throw new Exception("FirstName and LastName required");
+                return new ApiResponseDto<bool>("FirstName and LastName required");
             }
 
             var author = new Author
@@ -260,18 +262,18 @@ namespace Publisher.Application
 
             var result = authorRepository.InsertAuthor(author);
 
-            return true;
+            return new ApiResponseDto<bool>(result);
         }
 
-        public bool SetBookBasePrice(int authorId, int bookId, decimal price)
+        public ApiResponseDto<bool> SetBookBasePrice(int authorId, int bookId, decimal price)
         {
             var author = authorRepository.GetAuthorByIdWithBooks(authorId);
 
             author.Books[bookId - 1].BasePrice = price;
 
-            authorRepository.UpdateAuthorBook(author, bookId -1);
+            var result = authorRepository.UpdateAuthorBook(author, bookId -1);
 
-            return true;
+            return new ApiResponseDto<bool>(result);
         }
 
         public void InsertMultipleAuthors()
@@ -279,16 +281,16 @@ namespace Publisher.Application
             authorRepository.InsertMultipleAuthors();
         }
 
-        public bool QueryAggregate(string lastName)
+        public ApiResponseDto<bool> QueryAggregate(string lastName)
         {
             if (string.IsNullOrWhiteSpace(lastName))
             {
-                throw new Exception("LastName required for query");
+                return new ApiResponseDto<bool>("LastName required for query");
             }
 
             var result = authorRepository.QueryAggregate(lastName);
 
-            return true;
+            return new ApiResponseDto<bool>(result);
         }
 
         public void QueryFilters()
@@ -300,42 +302,42 @@ namespace Publisher.Application
             var result = authorRepository.QueryFilters(name, filters);
         }
 
-        public bool RetrieveAndUpdateAuthor(string name, string newName)
+        public ApiResponseDto<bool> RetrieveAndUpdateAuthor(string name, string newName)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new Exception("Insert name you would like to change");
+                return new ApiResponseDto<bool>("Insert name you would like to change");
             }
 
             if (string.IsNullOrWhiteSpace(newName))
             {
-                throw new Exception("New name is required");
+                return new ApiResponseDto<bool>("New name is required");
             }
 
             var author = authorRepository.GetAuthorByName(name);
 
             if (author == null)
             {
-                return false;
+                return new ApiResponseDto<bool>("Author not found");
             }
 
             author.FirstName = newName;
 
             var result = authorRepository.AddAuthor(author);
 
-            return result;
+            return new ApiResponseDto<bool>(result);
         }
 
-        public bool RetrieveAndUpdateMultipleAuthorsLastNames(string lastName, string updatedLastName)
+        public ApiResponseDto<bool> RetrieveAndUpdateMultipleAuthorsLastNames(string lastName, string updatedLastName)
         {
             if (string.IsNullOrWhiteSpace(lastName))
             {
-                throw new Exception("Insert name you would like to change");
+                return new ApiResponseDto<bool>("Insert name you would like to change");
             }
 
             if (string.IsNullOrWhiteSpace(updatedLastName))
             {
-                throw new Exception("New name is required");
+                return new ApiResponseDto<bool>("New name is required");
             }
 
             var authors = authorRepository.RetrieveAuthorsByLastName(lastName);
@@ -351,29 +353,29 @@ namespace Publisher.Application
 
             var result = authorRepository.AddManyAuthors(authorList.ToArray());
 
-            return result;
+            return new ApiResponseDto<bool>(result);
         }
 
-        public bool SkipAndTakeAuthors(int groupSize)
+        public ApiResponseDto<bool> SkipAndTakeAuthors(int groupSize)
         {
             if (groupSize <= 0)
             {
-                throw new Exception("A Group size larger than 0 is needed");
+                return new ApiResponseDto<bool>("A Group size larger than 0 is needed");
             }
 
             var result = authorRepository.SkipAndTakeAuthors(groupSize);
 
-            return true;
+            return new ApiResponseDto<bool>(result);
         }
 
-        public bool SortAuthorsDecendingOrder()
+        public ApiResponseDto<bool> SortAuthorsDecendingOrder()
         {
             var result = authorRepository.SortAuthors();
 
-            return true;
+            return new ApiResponseDto<bool>(result);
         }
 
-        public List<AuthorDto> GetAuthorsWithSqlRaw()
+        public ApiResponseDto<List<AuthorDto>> GetAuthorsWithSqlRaw()
         {
             var authors = authorRepository.SimpleRawSql();
 
@@ -386,7 +388,7 @@ namespace Publisher.Application
                 authorDtos.Add(authorDto);
             }
 
-            return authorDtos;
+            return new ApiResponseDto<List<AuthorDto>>(authorDtos);
         }
     }
 }

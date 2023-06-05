@@ -5,16 +5,16 @@ namespace Publisher.Application
 {
     public interface IBookFacade
     {
-        public BookDto GetBookById(int id);
+        public ApiResponseDto<BookDto> GetBookById(int id);
 
-        public BookDto GetBookByTitle(string bookTitle);
+        public ApiResponseDto<BookDto> GetBookByTitle(string bookTitle);
 
-        public List<BookDto> GetAllBooks();
+        public ApiResponseDto<List<BookDto>> GetAllBooks();
 
-        public bool AddManyBooks(params AddBookDto[] books);
+        public ApiResponseDto<bool> AddManyBooks(params AddBookDto[] books);
 
-        public List<BookAndCoverDto> GetAllBooksWithCovers();
+        public ApiResponseDto<List<BookAndCoverDto>> GetAllBooksWithCovers();
 
-        public bool AddBookWithCover(AddBookWithCoverDto bookWithCover);
+        public ApiResponseDto<bool> AddBookWithCover(AddBookWithCoverDto bookWithCover);
     }
 }

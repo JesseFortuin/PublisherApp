@@ -43,9 +43,7 @@ namespace Publisher.Infrastructure
 
         public List<Author> GetAuthors()
         {
-            var authors = pubContext.Authors.ToList();
-
-            return authors;
+            return pubContext.Authors.ToList();
         }
 
         public List<Author> GetAuthorsByRecentBook(int publishedOnAndAfter)
@@ -312,6 +310,92 @@ namespace Publisher.Infrastructure
         public List<Author> SimpleRawSql()
         {
             return pubContext.Authors.FromSqlRaw("Exec SelectAllAuthors").ToList();
+        }
+
+        public List<Author> RawSqlStoredProc(int yearStart, int yearEnd)
+        {
+            return pubContext.Authors
+                .FromSqlRaw("AuthorsPublishedinYearRange {0}, {1}", yearStart, yearEnd)
+                .ToList();
+        }
+
+        public List<Author> InterpolatedSqlStoredProc(int yearStart, int yearEnd)
+        {
+            return pubContext.Authors
+                .FromSqlInterpolated($"AuthorsPublishedinYearRange {yearStart}, {yearEnd}")
+                .ToList();
+        }
+
+        public List<AuthorByArtist> GetAuthorsWithArtists()
+        {
+            //These are not tracked
+            //not all DbSet methods work with keyless entities
+            //e.g. Find() fails when making sql
+            var authorsAndArtists = pubContext.AuthorsByArtists.ToList();
+
+            //var authorByArtist = pubContext.AuthorsByArtists.FirstOrDefault();
+
+            //var filterAuthorAndArtist = pubContext.AuthorsByArtists
+            //    .Where(a => a.Artist.StartsWith("K")).ToList();
+
+            return authorsAndArtists;
+        }
+
+        //There is no safe way with concatentation!
+        void ConcatenatedRawSql_Unsafe()
+        {
+            var lastnameStart = "L";
+
+            var authors = pubContext.Authors
+                .FromSqlRaw("SELECT * FROM authors WHERE lastname LIKE '" + lastnameStart + "%'")
+                .OrderBy(a => a.LastName).TagWith("Concatenated_Unsafe").ToList();
+        }
+        
+        void FormattedRawSql_Unsafe()
+        {
+            var lastnameStart = "L";
+
+            var sql = String.Format("SELECT * FROM authors WHERE lastname LIKE '{0}%'", lastnameStart);
+
+            var authors = pubContext.Authors.FromSqlRaw(sql)
+                .OrderBy(a => a.LastName).TagWith("Formatted_Unsafe").ToList();
+        }
+
+        void FormattedRawSql_Safe()
+        {
+            var lastnameStart = "L";
+
+            var authors = pubContext.Authors
+                .FromSqlRaw("SELECT * FROM authors WHERE lastname LIKE '{0}%'", lastnameStart)
+                .OrderBy(a => a.LastName).TagWith("Formatted_Safe").ToList();
+        }
+
+        void StringFromInterpolated_Unsafe()
+        {
+            var lastnameStart = "L";
+
+            string sql = $"SELECT * FROM authors WHERE lastname LIKE '{lastnameStart}%'";
+
+            var authors = pubContext.Authors.FromSqlRaw(sql)
+                .OrderBy(a => a.LastName).TagWith("Interpolated_Unsafe").ToList();
+        }
+
+        void StringFromInterpolated_StillUnsafe()
+        {
+            var lastnameStart = "L";
+
+            var authors = pubContext.Authors
+                .FromSqlRaw($"SELECT * FROM authors WHERE lastname LIKE '{lastnameStart}%'")
+                .OrderBy(a => a.LastName).TagWith("Interpolated_StillUnsafe").ToList();
+        }
+
+        void StringFromInterpolated_Safe()
+        {
+            var lastnameStart = "L";
+
+            var authors = pubContext.Authors
+                .FromSqlInterpolated($"SELECT * FROM authors WHERE lastname LIKE '{lastnameStart}%'")
+            .OrderBy(a => a.LastName).TagWith("Interpolated_Safe").ToList();
         }
     }
 }

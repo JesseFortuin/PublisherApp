@@ -4,10 +4,10 @@ namespace Publisher.Application
 {
     public interface IArtistFacade
     {
-        public bool AddExistingArtistToCover(int artistId, int coverId);
+        public ApiResponseDto<bool> AddExistingArtistToCover(int artistId, int coverId);
 
-        public ArtistDto FindArtistById(int artistId);
+        public ApiResponseDto<ArtistDto> FindArtistById(int artistId);
 
-        public bool CreateNewArtistWithNewCover(AddCoverAndArtistDto coverAndArtistDto);
+        public ApiResponseDto<bool> AddArtistWithNewCover(AddArtistWithNewCoverDto coverAndArtistDto);
     }
 }

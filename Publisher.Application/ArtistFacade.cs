@@ -8,16 +8,19 @@ namespace Publisher.Application
     {
         private readonly IArtistRepository artistRepository;
         private readonly ICoverRepository coverRepository;
+        private readonly IBookRepository bookRepository;
 
         public ArtistFacade(
             IArtistRepository artistRepository,
-            ICoverRepository coverRepository)
+            ICoverRepository coverRepository,
+            IBookRepository bookRepository)
         {
             this.artistRepository = artistRepository;
             this.coverRepository = coverRepository;
+            this.bookRepository = bookRepository;
         }
 
-        public ArtistDto FindArtistById(int artistId)
+        public ApiResponseDto<ArtistDto> FindArtistById(int artistId)
         {
             var artist = artistRepository.FindArtistById(artistId);
 
@@ -27,10 +30,10 @@ namespace Publisher.Application
                 LastName = artist.LastName,
             };
 
-            return artistDto;
+            return new ApiResponseDto<ArtistDto>(artistDto);
         }
 
-        public bool AddExistingArtistToCover(int artistId, int coverId)
+        public ApiResponseDto<bool> AddExistingArtistToCover(int artistId, int coverId)
         {
             var artist = artistRepository.FindArtistById(artistId);
 
@@ -38,13 +41,20 @@ namespace Publisher.Application
 
             cover.Artists.Add(artist);
 
-            var result = artistRepository.AddCover(cover);
+            var result = artistRepository.UpdateCover(cover);
 
-            return result;
+            return new ApiResponseDto<bool>(result);
         }
 
-        public bool CreateNewArtistWithNewCover(AddCoverAndArtistDto coverAndArtistDto)
+        public ApiResponseDto<bool> AddArtistWithNewCover(AddArtistWithNewCoverDto coverAndArtistDto)
         {
+            var book = bookRepository.GetBookById(coverAndArtistDto.BookId);
+
+            if (book == null)
+            {
+                return new ApiResponseDto<bool>("Book not found");
+            }
+
             var artist = new Artist 
             {
                 FirstName = coverAndArtistDto.FirstName,
@@ -53,14 +63,15 @@ namespace Publisher.Application
 
             var cover = new Cover
             {
-                DesignIdeas = coverAndArtistDto.DesignIdeas
+                DesignIdeas = coverAndArtistDto.DesignIdeas,
+                BookId = coverAndArtistDto.BookId
             };
 
             artist.Covers.Add(cover);
 
             var result = artistRepository.AddArtist(artist);
 
-            return result;
+            return new ApiResponseDto<bool>(result);
         }
     }
 }

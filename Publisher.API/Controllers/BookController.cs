@@ -17,7 +17,7 @@ namespace Publisher.API.Controllers
         }
 
         [HttpGet()]
-        public ActionResult<IEnumerable<BookDto>> GetAllBooks()
+        public ActionResult<ApiResponseDto<IEnumerable<BookDto>>> GetAllBooks()
         {
             var books = bookFacade.GetAllBooks();
             
@@ -25,7 +25,7 @@ namespace Publisher.API.Controllers
         }
 
         [HttpGet("cover")]
-        public ActionResult<IEnumerable<BookAndCoverDto>> GetAllBooksWithCovers()
+        public ActionResult<ApiResponseDto<IEnumerable<BookAndCoverDto>>> GetAllBooksWithCovers()
         {
             var books = bookFacade.GetAllBooksWithCovers();
 
@@ -33,7 +33,7 @@ namespace Publisher.API.Controllers
         }
 
         [HttpGet("{bookId}")]
-        public ActionResult GetBookById(int bookId)
+        public ActionResult<ApiResponseDto<BookDto>> GetBookById(int bookId)
         {
             var book = bookFacade.GetBookById(bookId);
 
@@ -45,8 +45,8 @@ namespace Publisher.API.Controllers
             return Ok(book);
         }
 
-        [HttpGet("{title}", Name = "GetBook")]
-        public ActionResult GetBookByTile(string title)
+        [HttpGet("{title}")]
+        public ActionResult<ApiResponseDto<BookDto>> GetBookByTile(string title)
         {
             var book = bookFacade.GetBookByTitle(title);
 
@@ -59,19 +59,19 @@ namespace Publisher.API.Controllers
         }
 
         [HttpPost()]
-        public ActionResult AddManyBooks(AddBookDto[] books) 
+        public ActionResult<ApiResponseDto<bool>> AddManyBooks(AddBookDto[] books) 
         {
-            bookFacade.AddManyBooks(books);
+            var result = bookFacade.AddManyBooks(books);
 
-            return Ok();
+            return Ok(result);
         }
 
         [HttpPost("cover")]
-        public ActionResult AddBookWithCover(AddBookWithCoverDto bookAndCover)
+        public ActionResult<ApiResponseDto<bool>> AddBookWithCover(AddBookWithCoverDto bookAndCover)
         {
-            bookFacade.AddBookWithCover(bookAndCover);
+            var result = bookFacade.AddBookWithCover(bookAndCover);
 
-            return Ok();
+            return Ok(result);
         }
     }
 }

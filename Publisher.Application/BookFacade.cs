@@ -16,7 +16,7 @@ namespace Publisher.Application
             this.authorRepository = authorRepository;
         }
 
-        public bool AddBookWithCover(AddBookWithCoverDto bookWithCover)
+        public ApiResponseDto<bool> AddBookWithCover(AddBookWithCoverDto bookWithCover)
         {
             var book = new Book
             {
@@ -27,17 +27,17 @@ namespace Publisher.Application
 
             var cover = new Cover
             {
-                DesignIdeas = bookWithCover.DesignIdeas
+                DesignIdeas = bookWithCover.DesignIdeas,
             };
 
             book.Cover = cover;
 
             var result = bookRepository.AddBook(book);
 
-            return result;
+            return new ApiResponseDto<bool>(result);
         }
 
-        public bool AddManyBooks(params AddBookDto[] booksDto)
+        public ApiResponseDto<bool> AddManyBooks(params AddBookDto[] booksDto)
         {
             var books = new List<Book>();
 
@@ -47,7 +47,7 @@ namespace Publisher.Application
 
                 if (author == null)
                 {
-                    throw new Exception("Author Id does not match author in database");
+                    return new ApiResponseDto<bool>("Author Id does not match author in database");
                 }
 
                 var book = new Book
@@ -62,10 +62,10 @@ namespace Publisher.Application
 
             var result = bookRepository.AddManyBooks(books.ToArray());
 
-            return result;
+            return new ApiResponseDto<bool>(result);
         }
 
-        public List<BookDto> GetAllBooks()
+        public ApiResponseDto<List<BookDto>> GetAllBooks()
         {
             var Books = bookRepository.GetAllBooks();
 
@@ -83,10 +83,10 @@ namespace Publisher.Application
                 BookDtos.Add(bookDto);
             }
 
-            return BookDtos;
+            return new ApiResponseDto<List<BookDto>>(BookDtos);
         }
 
-        public List<BookAndCoverDto> GetAllBooksWithCovers()
+        public ApiResponseDto<List<BookAndCoverDto>> GetAllBooksWithCovers()
         {
             var booksAndCoversDto = new List<BookAndCoverDto>();
 
@@ -103,10 +103,10 @@ namespace Publisher.Application
                 booksAndCoversDto.Add(bookAndCoverDto);
             }
 
-            return booksAndCoversDto;
+            return new ApiResponseDto<List<BookAndCoverDto>>(booksAndCoversDto);
         }
 
-        public BookDto GetBookById(int id)
+        public ApiResponseDto<BookDto> GetBookById(int id)
         {
             var book = bookRepository.GetBookById(id);
 
@@ -117,10 +117,10 @@ namespace Publisher.Application
                 Title = book.Title
             };
 
-            return bookDto;
+            return new ApiResponseDto<BookDto>(bookDto);
         }
 
-        public BookDto GetBookByTitle(string bookTitle)
+        public ApiResponseDto<BookDto> GetBookByTitle(string bookTitle)
         {
             var book = bookRepository.GetBookByTitle(bookTitle);
 
@@ -131,7 +131,7 @@ namespace Publisher.Application
                 Title = book.Title
             };
 
-            return bookDto;
+            return new ApiResponseDto<BookDto>(bookDto);
         }
     }
 }

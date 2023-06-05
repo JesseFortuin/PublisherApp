@@ -143,6 +143,20 @@ namespace Publisher.Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Publisher.Domain.Entities.AuthorByArtist", b =>
+                {
+                    b.Property<string>("Artist")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Author")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable((string)null);
+
+                    b.ToView("AuthorsByArtists", (string)null);
+                });
+
             modelBuilder.Entity("Publisher.Domain.Entities.Book", b =>
                 {
                     b.Property<int>("BookId")

@@ -1,5 +1,4 @@
 ﻿using Publisher.Domain.Entities;
-using Publisher.Shared.Dtos;
 
 namespace Publisher.Infrastructure
 {
@@ -16,6 +15,8 @@ namespace Publisher.Infrastructure
         public bool ExplicitLoadCollection();
 
         public List<Author> GetAuthors();
+
+        public List<AuthorByArtist> GetAuthorsWithArtists();
 
         public Author GetAuthorByName(string name);
 

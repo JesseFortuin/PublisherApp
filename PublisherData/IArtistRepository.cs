@@ -6,6 +6,8 @@ namespace Publisher.Infrastructure
     {
         bool AddCover(Cover cover);
 
+        public bool UpdateCover(Cover cover);
+
         Artist FindArtistById(int ArtistId);
 
         public bool AddArtist(Artist artist);

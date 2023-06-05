@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Query.Internal;
 using Publisher.Application;
 using Publisher.Shared.Dtos;
 
@@ -17,15 +16,15 @@ namespace Publisher.API.Controllers
         }
 
         [HttpGet()]
-        public ActionResult<IEnumerable<AuthorDto>> GetAllAuthors()
+        public ActionResult<ApiResponseDto<IEnumerable<AuthorDto>>> GetAllAuthors()
         {
             var result = publisherFacade.GetAuthors();
 
             return Ok(result);
         }
-        
+
         [HttpGet("sql")]
-        public ActionResult<IEnumerable<AuthorDto>> GetAllAuthorsWithSql()
+        public ActionResult<ApiResponseDto<IEnumerable<AuthorDto>>> GetAllAuthorsWithSql()
         {
             var result = publisherFacade.GetAuthorsWithSqlRaw();
 
@@ -33,15 +32,15 @@ namespace Publisher.API.Controllers
         }
 
         [HttpGet("books")]
-        public ActionResult<IEnumerable<AuthorWithBooksDto>> GetAuthorsWithBooks()
+        public ActionResult<ApiResponseDto<IEnumerable<AuthorWithBooksDto>>> GetAuthorsWithBooks()
         {
             var result = publisherFacade.GetAuthorsWithBooks();
 
             return Ok(result);
         }
-        
+
         [HttpGet("books/{year}")]
-        public ActionResult<IEnumerable<AuthorDto>> GetAuthorsByYearOfPublish(int year)
+        public ActionResult<ApiResponseDto<IEnumerable<AuthorDto>>> GetAuthorsByYearOfPublish(int year)
         {
             var result = publisherFacade.GetAuthorsByRecentBook(year);
 
@@ -49,7 +48,7 @@ namespace Publisher.API.Controllers
         }
 
         [HttpGet("{authorId}")]
-        public ActionResult GetAuthorById(int authorId)
+        public ActionResult<ApiResponseDto<bool>> GetAuthorById(int authorId)
         {
             var result = publisherFacade.GetAuthorById(authorId);
 
@@ -61,8 +60,8 @@ namespace Publisher.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{firstName}", Name = "GetAuthor")]
-        public ActionResult GetAuthorByName(string firstName)
+        [HttpGet("{firstName}")]
+        public ActionResult<ApiResponseDto<bool>> GetAuthorByName(string firstName)
         {
             var result = publisherFacade.GetAuthorByName(firstName);
 
@@ -75,29 +74,29 @@ namespace Publisher.API.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddAuthor(AddAuthorDto authorDto)
+        public ActionResult<ApiResponseDto<bool>> AddAuthor(AddAuthorDto authorDto)
         {
-            publisherFacade.AddAuthor(authorDto);
+            var result = publisherFacade.AddAuthor(authorDto);
 
-            return Ok();
+            return Ok(result);
         }
 
         [HttpPost("books")]
-        public ActionResult AddAuthorWithBooks(AddAuthorWithBookDto authorWithBookDto)
+        public ActionResult<ApiResponseDto<bool>> AddAuthorWithBooks(AddAuthorWithBookDto authorWithBookDto)
         {
-            publisherFacade.AddAuthorWithBook(authorWithBookDto);
+            var result = publisherFacade.AddAuthorWithBook(authorWithBookDto);
 
-            return Ok();
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteAuthor(int id) 
+        public ActionResult<ApiResponseDto<bool>> DeleteAuthor(int id)
         {
             var result = publisherFacade.DeleteAuthor(id);
 
-            if (result == false)
+            if (result == null)
             {
-                return NotFound();
+                return NotFound(result);
             }
 
             return NoContent();

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Publisher.Domain.Entities;
 
 namespace PublisherData
@@ -14,23 +13,19 @@ namespace PublisherData
 
         public DbSet<Cover> Covers { get; set; }
 
-        public PubContext(DbContextOptions<PubContext> options)
-            :base(options)
-        {
-            
-        }
+        public DbSet<AuthorByArtist> AuthorsByArtists { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public PubContext(DbContextOptions<PubContext> options)
+            : base(options)
         {
-            optionsBuilder.UseSqlServer(
-                "Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = PubDatabase"
-                ).LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name },
-                LogLevel.Information)
-                .EnableSensitiveDataLogging();//specifically for demo purposes, leaks sensitive info
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AuthorByArtist>().HasNoKey()
+                .ToView("AuthorsByArtists");
+
             modelBuilder.Entity<Author>().HasData(
                 new Author { AuthorId = 1, FirstName = "Rhoda", LastName = "Lerman" });
 
@@ -43,7 +38,7 @@ namespace PublisherData
                 new Author {AuthorId = 6, FirstName = "Isabelle", LastName = "Allende" },
                 new Author {AuthorId = 7, FirstName = "Andrzej", LastName = "Sapkowski" }
             };
-       
+
             modelBuilder.Entity<Author>().HasData(authorList);
 
             var someBooks = new Book[]
