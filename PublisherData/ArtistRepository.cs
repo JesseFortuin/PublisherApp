@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Publisher.Domain.Entities;
 using PublisherData;
-using System.Net;
 
 namespace Publisher.Infrastructure
 {

@@ -18,12 +18,18 @@ IHost host = Host.CreateDefaultBuilder()
         services.AddSingleton<IBookFacade, BookFacade>();
 
         services.AddSingleton<IBookRepository, BookRepository>();
+
+        services.AddSingleton<IDataLogicRepository, DataLogicRepository>();
+
+        services.AddSingleton<IDataLogicFacade, DataLogicFacade>();
     })
     .Build();
 
 var publisher = host.Services.GetRequiredService<IPublisherFacade>();
 
 var bookFacade = host.Services.GetService<IBookFacade>();
+
+var logicFacade = host.Services.GetService<IDataLogicFacade>();
 
 //var authors = new List<AddAuthorDto>
 //{
@@ -47,6 +53,8 @@ var bookFacade = host.Services.GetService<IBookFacade>();
 
 //var result = bookFacade.GetAllBooks();
 
+//Console.WriteLine(result.Value);
+
 //foreach (var bookDto in result)
 //{
 //    Console.WriteLine($"Book Author: {bookDto.AuthorName}, book Id: {bookDto.BookId}, Title: {bookDto.Title}");
@@ -64,8 +72,7 @@ var bookFacade = host.Services.GetService<IBookFacade>();
 
 //publisher.EagerLoadBooksWithAuthors();
 
-var book = bookFacade.GetBookById(8);
+//var book = bookFacade.GetBookById(8);
 
-Console.WriteLine(book);
+//Console.WriteLine(book.Value);
 
-//      publisher.GetAuthorsWithBooks();
