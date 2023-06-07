@@ -638,3 +638,4 @@ H:\PublisherApp\Publisher.Test\bin\Debug\net6.0\Publisher.Infrastructure.pdb
 H:\PublisherApp\Publisher.Test\obj\Debug\net6.0\Publisher.Test.csproj.CopyComplete
 H:\PublisherApp\Publisher.Test\obj\Debug\net6.0\Publisher.Test.genruntimeconfig.cache
 H:\PublisherApp\Publisher.Test\obj\Debug\net6.0\ref\Publisher.Test.dll
+D:\Dev\Lessons\EF Core 6 Fundamentals\PublisherApp\Publisher.Test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll

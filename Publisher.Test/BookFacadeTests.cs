@@ -1,7 +1,10 @@
-﻿using NSubstitute;
+﻿using Microsoft.EntityFrameworkCore;
+using NSubstitute;
 using Publisher.Application;
+using Publisher.Domain.Entities;
 using Publisher.Infrastructure;
 using Publisher.Shared.Dtos;
+using PublisherData;
 
 namespace Publisher.Test
 {
@@ -11,44 +14,71 @@ namespace Publisher.Test
         public void AddManyBooks_Fails_InvalidListOfBookDtos()
         {
             //arrange
-            var BookDtos = new List<AddBookDto> 
+            var builder = new DbContextOptionsBuilder<PubContext>();
+
+            builder.UseInMemoryDatabase("AddManyBooks_Fails_InvalidListOfBookDtos");
+
+            using (var context = new PubContext(builder.Options))
             {
-                new AddBookDto {AuthorId = 20, Title = "Test"},
-                new AddBookDto {AuthorId = 25, Title = "Test Two"}
+                IAuthorRepository authorRepository = new AuthorRepository(context);
+
+                IBookFacade bookFacade = new BookFacade(null, authorRepository);
+
+                var BookDtos = new List<AddBookDto>
+                {
+                    new AddBookDto {AuthorId = 20, Title = "Test"},
+                    new AddBookDto {AuthorId = 25, Title = "Test Two"}
+                };
+
+                var expected = new ApiResponseDto<bool>("Author Id does not match author in database");
+
+                //act
+                var result = bookFacade.AddManyBooks(BookDtos.ToArray());
+
+                //assert
+                Assert.Equal(expected.ErrorMessage, result.ErrorMessage);
             };
-
-            IAuthorRepository authorRepository = Substitute.For<IAuthorRepository>();
-
-            IBookFacade bookFacade = new BookFacade(null, authorRepository);
-
-            //act
-            var result = Assert.Throws<Exception>(() => bookFacade.AddManyBooks(BookDtos.ToArray()));
-
-            //assert
-            Assert.Equal("Author Id does not match author in database", result.Message);
         }
-        //[Fact]
-        //public void AddManyBooks_Succeeds_ValidDtos()
-        //{
-        //    //arrange
-        //    var BookDtos = new List<AddBookDto>
-        //    {
-        //        new AddBookDto {AuthorId = 1, Title = "Test"},
-        //        new AddBookDto {AuthorId = 2, Title = "Test Two"}
-        //    };
 
-        //    IAuthorRepository authorRepository = Substitute.For<IAuthorRepository>();
+        [Fact]
+        public void AddManyBooks_Succeeds_ValidDtos()
+        {
+            //arrange
+            var builder = new DbContextOptionsBuilder<PubContext>();
 
-        //    IBookRepository bookRepository = Substitute.For<IBookRepository>();
+            builder.UseInMemoryDatabase("AddManyBooks_Succeeds_ValidDtos");
 
-        //    IBookFacade bookFacade = new BookFacade(bookRepository, authorRepository);
+            using (var context = new PubContext(builder.Options))
+            {
+                var author1 = new Author { FirstName = "Test", LastName = "author" };
 
-        //    var expected = true;
-        //    //act
-        //    var result = bookFacade.AddManyBooks(BookDtos.ToArray());
+                var author2 = new Author { FirstName = "Also", LastName = "Test" };
 
-        //    //assert
-        //    Assert.Equal(expected, result);
-        //}
+                context.Authors.AddRange(author1, author2);
+
+                context.SaveChanges();
+
+                var BookDtos = new List<AddBookDto>
+                {
+                    new AddBookDto {AuthorId = 1, Title = "Test"},
+                    new AddBookDto {AuthorId = 2, Title = "Test Two"}
+                };
+
+                IAuthorRepository authorRepository = new AuthorRepository(context);
+
+                IBookRepository bookRepository = new BookRepository(context);
+
+                IBookFacade bookFacade = new BookFacade(bookRepository, authorRepository);
+
+                var expected = new ApiResponseDto<bool>(true);
+
+                //act
+                var result = bookFacade.AddManyBooks(BookDtos.ToArray());
+
+                //assert
+                Assert.Equal(expected.Value, result.Value);
+            } 
+            
+        }
     }
 }

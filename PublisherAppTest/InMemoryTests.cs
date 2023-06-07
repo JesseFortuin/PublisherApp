@@ -4,7 +4,6 @@ using Publisher.Domain.Entities;
 using Publisher.Infrastructure;
 using Publisher.Shared.Dtos;
 using PublisherData;
-using System.Diagnostics;
 
 namespace PublisherAppTest
 {
